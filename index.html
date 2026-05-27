@@ -34,6 +34,9 @@
       scroll-padding-top: 90px; /* offset for fixed navbar */
     }
 
+    html, body {
+      overflow-x: hidden;
+    }
     body {
       font-family: 'DM Sans', sans-serif;
       color: var(--text-body);
@@ -309,6 +312,12 @@
       padding-top: 0.1rem;
     }
 
+    @media (max-width: 406px) {
+      .countdown-num { font-size: 2rem; }
+      .countdown-sep { font-size: 1.8rem; }
+      .countdown-unit-label { font-size: 0.6rem; letter-spacing: 0.1em; }
+    }
+
     /* ── ABOUT ─────────────────────────────────────────── */
     .section-label {
       font-size: 0.73rem;
@@ -418,6 +427,12 @@
       opacity: 0.75;
       margin-top: 0.15rem;
       letter-spacing: 0.08em;
+    }
+
+    @media (max-width: 442px) {
+      .prog-tab { padding: 0.5rem 0.75rem; min-width: 0; }
+      .prog-tab-day { font-size: 0.75rem; }
+      .prog-tab-date { font-size: 0.6rem; }
     }
 
     /* Panel */
@@ -574,6 +589,8 @@
       font-size: 0.88rem;
       margin-bottom: 0.25rem;
     }
+
+
 
     /* ── SPONSORS ──────────────────────────────────────── */
     .sponsors-section {
@@ -902,12 +919,38 @@
     }
 
     /* ── RESPONSIVE TWEAKS ─────────────────────────────── */
+
+    @media (max-width: 605px) {
+      .prog-table-wrap { overflow-x: hidden; }
+      .prog-table { table-layout: fixed; width: 100%; }
+      .col-time     { width: 72px; }
+      .col-location { width: 90px; }
+      .col-cost     { width: 72px; }
+      .prog-table td, .prog-table th { font-size: 0.78rem; padding: 0.55rem 0.5rem; word-break: break-word; }
+      .prog-table td.col-time { white-space: normal; word-break: break-word; }
+      .prog-table td.col-time .time-badge { white-space: normal; word-break: break-word; }
+      .prog-table td:first-child { white-space: normal; word-break: break-word; }
+      .prog-table td:first-child .time-badge { white-space: normal; word-break: break-word; }
+    }
+
     @media (max-width: 767px) {
-      .about-img-wrap { box-shadow: 10px 10px 0 var(--sunset-gold); margin-bottom: 3rem; }
-      .map-embed { box-shadow: -10px 10px 0 rgba(232,147,74,0.3); }
+      .about-img-wrap {       box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;}
+      .map-embed { box-shadow: none;}
       .newsletter-form { flex-direction: column; border-radius: 4px; }
       .newsletter-form input,
       .newsletter-form button { border-radius: 2px; }
+      .wide {
+        max-width: 100%;
+      }
+      footer .col-6,
+      footer .col-12,
+      footer [class*="col-"] {
+        text-align: center;
+      }
+      footer img.footer-logo { margin-left: auto; margin-right: auto; display: block; }
+      .footer-links { text-align: center; }
+      .social-links { text-align: center; }
+      .footer-divider + div { text-align: center; }
     }
   </style>
 </head>
@@ -1048,7 +1091,7 @@
 
   <!-- ── PROGRAMME ── -->
   <section class="programme-section" id="highlights">
-    <div class="container">
+    <div class="container wide">
       <div class="text-center mb-5">
         <p class="section-label">What's On</p>
         <h2 class="section-title">Festival Programme 2026</h2>
