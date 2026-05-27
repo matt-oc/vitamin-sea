@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1440 320"
+     preserveAspectRatio="none">
+
+  <defs>
+    <linearGradient id="waveBack" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b6f0ff"/>
+      <stop offset="100%" stop-color="#6ccdf2"/>
+    </linearGradient>
+
+    <linearGradient id="waveMid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#7fe3ff"/>
+      <stop offset="100%" stop-color="#39b6e6"/>
+    </linearGradient>
+
+    <linearGradient id="waveFront" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5ad6ff"/>
+      <stop offset="100%" stop-color="#159ad6"/>
+    </linearGradient>
+  </defs>
+
+  <style>
+    svg {
+      width: 100%;
+      height: auto;
+      display: block;
+      background: white;
+    }
+
+    .layer {
+      will-change: transform;
+    }
+
+    .back {
+      animation: move 24s linear infinite;
+      opacity: 0.4;
+    }
+
+    .mid {
+      animation: move 18s linear infinite;
+      opacity: 0.65;
+    }
+
+    .front {
+      animation: move 12s linear infinite;
+      opacity: 0.9;
+    }
+
+    @keyframes move {
+      from {
+        transform: translate3d(0,0,0);
+      }
+      to {
+        transform: translate3d(-1440px,0,0);
+      }
+    }
+  </style>
+
+  <!-- BACK WAVE -->
+  <g class="layer back">
+    <path fill="url(#waveBack)"
+      d="
+      M0,220
+      C120,200 240,240 360,220
+      C480,200 600,180 720,220
+      C840,260 960,240 1080,220
+      C1200,200 1320,180 1440,220
+      L1440,320 L0,320 Z"/>
+
+    <path fill="url(#waveBack)"
+      transform="translate(1440 0)"
+      d="
+      M0,220
+      C120,200 240,240 360,220
+      C480,200 600,180 720,220
+      C840,260 960,240 1080,220
+      C1200,200 1320,180 1440,220
+      L1440,320 L0,320 Z"/>
+  </g>
+
+  <!-- MIDDLE WAVE -->
+  <g class="layer mid">
+    <path fill="url(#waveMid)"
+      d="
+      M0,245
+      C120,220 240,260 360,245
+      C480,230 600,210 720,245
+      C840,280 960,260 1080,240
+      C1200,220 1320,210 1440,245
+      L1440,320 L0,320 Z"/>
+
+    <path fill="url(#waveMid)"
+      transform="translate(1440 0)"
+      d="
+      M0,245
+      C120,220 240,260 360,245
+      C480,230 600,210 720,245
+      C840,280 960,260 1080,240
+      C1200,220 1320,210 1440,245
+      L1440,320 L0,320 Z"/>
+  </g>
+
+  <!-- FRONT WAVE -->
+  <g class="layer front">
+    <path fill="url(#waveFront)"
+      d="
+      M0,270
+      C120,240 240,280 360,270
+      C480,260 600,230 720,270
+      C840,310 960,280 1080,260
+      C1200,240 1320,230 1440,270
+      L1440,320 L0,320 Z"/>
+
+    <path fill="url(#waveFront)"
+      transform="translate(1440 0)"
+      d="
+      M0,270
+      C120,240 240,280 360,270
+      C480,260 600,230 720,270
+      C840,310 960,280 1080,260
+      C1200,240 1320,230 1440,270
+      L1440,320 L0,320 Z"/>
+  </g>
+
+</svg>
