@@ -74,6 +74,7 @@
     .nav-link:hover { color: var(--sunset-gold) !important; }
     .navbar-toggler { border-color: rgba(255,255,255,0.4); }
     .navbar-toggler-icon { filter: invert(1); }
+    .navbar-toggler:focus, .navbar-toggler:hover { outline:none; box-shadow: none;}
 
     .btn-ticket {
       background: var(--sunset-gold);
@@ -694,6 +695,7 @@
     @media (max-width: 991px) {
       .sponsor-grid-md .sponsor-logo-cell { width: calc(50% - 0.5rem); }
       .sponsor-grid-sm .sponsor-logo-cell { width: calc(33.33% - 0.67rem); }
+      .navbar {padding-top: 0; padding-bottom: 0;}
     }
     @media (max-width: 575px) {
       .sponsor-title-link { padding: 1.8rem 2rem; }
@@ -1571,7 +1573,7 @@
       <!-- Legend -->
       <div class="prog-legend">
         <span class="legend-item"><span class="cat-dot cat-wellness"></span>Wellness &amp; Yoga</span>
-        <span class="legend-item"><span class="cat-dot cat-water"></span>Water Sports</span>
+        <span class="legend-item"><span class="cat-dot cat-water"></span>Water Activities</span>
         <span class="legend-item"><span class="cat-dot cat-food"></span>Food &amp; Drink</span>
         <span class="legend-item"><span class="cat-dot cat-music"></span>Music, Arts &amp; Culture</span>
       </div>
