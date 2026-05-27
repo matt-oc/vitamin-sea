@@ -968,7 +968,7 @@
       <a class="navbar-brand" href="#">
         <img src="images/taste-tramore-logo-white.png" alt="Taste Tramore" />
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" id="navButton">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navMenu">
@@ -1896,6 +1896,14 @@
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 60);
     });
+
+    const navButton = document.getElementById('navButton')
+    nav.addEventListener('click', () => {
+      if (window.scrollY < 60) {
+      nav.classList.toggle('scrolled');
+    }
+    });
+
 
     // ── Programme day tabs
     document.querySelectorAll('.prog-tab').forEach(tab => {
