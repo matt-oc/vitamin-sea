@@ -1924,6 +1924,15 @@
     }
     updateCountdown();
     setInterval(updateCountdown, 1000);
+
+    // ── Collapse navbar on nav-link click (mobile)
+    const navCollapse = document.getElementById('navMenu');
+    document.querySelectorAll('#navMenu .nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        const bsCollapse = bootstrap.Collapse.getInstance(navCollapse);
+        if (bsCollapse) bsCollapse.hide();
+      });
+    });
   </script>
 </body>
 </html>
