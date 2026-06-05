@@ -39,16 +39,16 @@
       /* offset for fixed navbar */
     }
 
-    html,
-    body {
-      overflow-x: hidden;
-    }
-
     body {
       font-family: 'DM Sans', sans-serif;
       color: var(--text-body);
       background: var(--foam);
       margin: 0;
+    }
+
+    html,
+    body {
+      overflow-x: clip;
     }
 
     /* ── NAVBAR ─────────────────────────────────────────── */
@@ -63,7 +63,7 @@
     }
 
     .navbar.scrolled {
-      background: rgba(13, 34, 51, 0.96) !important;
+      background: rgba(13, 34, 51, 0.98) !important;
       box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
     }
 
@@ -454,6 +454,10 @@
     }
 
     /* ── PROGRAMME ─────────────────────────────────────── */
+    .mobile-label {
+  display: none;
+}
+
     .programme-section {
       background: var(--ocean-deep);
       padding: 5rem 0 4rem;
@@ -559,7 +563,7 @@
 
     /* Table wrapper */
     .prog-table-wrap {
-      overflow-x: auto;
+       overflow-x: clip;
       border-radius: 6px;
       box-shadow: 0 4px 30px rgba(0, 0, 0, 0.35);
     }
@@ -572,18 +576,24 @@
       font-size: 0.875rem;
     }
 
+    .prog-table thead {
+      position: sticky;
+      top: 115px;
+    }
+
     .prog-table thead tr {
       background: var(--ocean-deep);
+      border-left: 5px solid #0D2233;
     }
 
     .prog-table thead th {
       color: rgba(255, 255, 255, 0.65);
+      background: var(--ocean-deep);
       font-size: 0.68rem;
       font-weight: 600;
       letter-spacing: 0.18em;
       text-transform: uppercase;
       padding: 1rem 1.2rem;
-      border-left: 5px solid #0D2233;
       white-space: nowrap;
     }
 
@@ -605,6 +615,10 @@
       vertical-align: top;
       color: var(--text-body);
     }
+
+    .prog-table td:nth-child(4) {
+  vertical-align: middle;
+}
 
     /* Column widths */
     .col-time {
@@ -661,6 +675,8 @@
       font-size: 0.75rem;
       color: #999;
       margin-top: 0.2rem;
+      padding: 0.2rem 0.2rem;
+      font-weight: bold;
     }
 
     .booking a {
@@ -937,6 +953,11 @@
       .navbar {
         padding-top: 0;
         padding-bottom: 0;
+      }
+
+      .prog-table thead {
+        position: sticky;
+        top: 84px;
       }
     }
 
@@ -1275,13 +1296,13 @@
     /* ── RESPONSIVE TWEAKS ─────────────────────────────── */
 
     @media (max-width: 605px) {
-      .prog-table-wrap {
-        overflow-x: hidden;
-      }
-
       .prog-table {
         table-layout: fixed;
         width: 100%;
+      }
+
+      .prog-table-wrap {
+        overflow-x: clip;
       }
 
       .col-time {
@@ -1326,8 +1347,22 @@
 
     @media (max-width: 720px) {
 
+      .desktop-label {
+    display: none;
+  }
+
+  .mobile-label {
+    display: inline;
+  }
+
       .prog-table thead {
         display: table-header-group;
+      }
+
+      .prog-table thead th {
+        padding: 1rem .4rem;
+        position: sticky;
+        top: 115px;
       }
 
       .prog-table thead th:nth-child(3) {
@@ -1339,23 +1374,22 @@
       }
 
       .prog-table thead th:nth-child(1) {
-        flex: 0.8 1 0;
-      }
+    flex: 0.7 1 0;
+  }
 
-      .prog-table thead th:nth-child(2) {
-        flex: 1.1 1 0;
-        text-align: center;
-      }
+  .prog-table thead th:nth-child(2) {
+    flex: 1.15 1 0;
+  }
 
-      .prog-table thead th:nth-child(4) {
-        flex: 1.1 1 0;
-        text-align: right;
-      }
+  .prog-table thead th:nth-child(4) {
+    flex: 1.15 1 0;
+    text-align: right;
+  }
 
       .prog-table tbody tr {
         display: flex;
         flex-wrap: wrap;
-        align-items: stretch;
+        align-items: center;
       }
 
       /* Time, Location, Cost */
@@ -1365,9 +1399,6 @@
         flex: 1 1 0;
       }
 
-      .prog-table tbody tr>td:nth-child(2) {
-        text-align: center;
-      }
 
       /* Activity spans full width underneath */
       .prog-table tbody tr>td:nth-child(3) {
@@ -1650,7 +1681,7 @@
                 <th class="col-time">Time</th>
                 <th class="col-location">Location</th>
                 <th class="col-activity">Activity</th>
-                <th class="col-cost">Cost</th>
+                <th class="col-cost"><span class="desktop-label">Cost & Booking</span><span class="mobile-label">Cost & Book</span></th>
               </tr>
             </thead>
             <tbody>
@@ -1664,74 +1695,79 @@
                 <td><span class="time-badge">7:00am</span></td>
                 <td>Tramore Beach</td>
                 <td><strong>Early Morning Pilates</strong><br><span class="detail">With Maria Chester and Emily</span></td>
-                <td><span class="cost-free">Free</span><span class="booking">No booking required</span></td>
+                <td><span class="cost-free">Free</span><span class="booking">Drop-in</span></td>
               </tr>
               <tr class="cat-water">
-                <td><span class="time-badge">7–9am</span></td>
+                <td><span class="time-badge">7:00–9:00am</span></td>
                 <td>Newtown Cove</td>
-                <td><strong>Sunrise Stand Up Paddle Board &amp; Breakfast</strong><br><span class="detail">With Surf SUP Tramore and breakfast with Chez Munchez</span></td>
-                <td><span class="cost-paid">€50</span><br><span class="booking">Contact Niall: 085 266 2592</span></td>
+                <td><strong>Sunrise Stand Up Paddle Board &amp; Breakfast</strong><br><span class="detail">With Surf & SUP Tramore and breakfast with Chez Munchez</span></td>
+                <td><span class="cost-paid">€50</span><br><span class="booking">Niall: 085 266 2592</span></td>
               </tr>
               <tr class="cat-wellness">
                 <td><span class="time-badge">8:00am</span></td>
                 <td>Tramore Beach</td>
                 <td><strong>Yoga Session</strong><br><span class="detail">With Emma Fan</span></td>
-                <td><span class="cost-free">Free</span><span class="booking">No booking required</span></td>
+                <td><span class="cost-free">Free</span><span class="booking">Drop-in</span></td>
               </tr>
               <tr class="cat-water">
                 <td><span class="time-badge">12–2pm &amp; 6–8pm</span></td>
                 <td>Newtown Cove</td>
-                <td><strong>Stand Up Paddle Board &amp; Pizza</strong><br><span class="detail">With Surf SUP Tramore and pizza from The Shack at the Ritz</span></td>
-                <td><span class="cost-paid">€55</span><br><span class="booking">Contact Niall: 085 266 2592</span></td>
+                <td><strong>Stand Up Paddle Board &amp; Pizza</strong><br><span class="detail">With Surf & SUP Tramore and pizza from The Shack at the Ritz</span></td>
+                <td><span class="cost-paid">€55</span><br><span class="booking">Niall: 085 266 2592</span></td>
               </tr>
               <tr class="cat-music">
-                <td><span class="time-badge">4–8pm</span></td>
+                <td><span class="time-badge">4:00–8:00pm</span></td>
                 <td>Main Street &amp; The Plaza</td>
-                <td><strong>Festival Opening &amp; Street Party</strong><br><span class="detail">Join us for the official Festival Opening and Street Party in the heart of Tramore!
+                <td><strong>Festival Opening &amp; Street Party</strong><br><span class="detail">Join us for the official Festival Opening with the Mayor and Street Party in the heart of Tramore!
                     Enjoy delicious food, late opening cafés, feel-good disco tunes, live music, and a vibrant
                     atmosphere for all ages as the town comes alive for the weekend</span></td>
-                <td><span class="cost-free">Free</span><span class="booking">No booking required</span></td>
+                <td><span class="cost-free">Free</span><span class="booking">Drop-in</span></td>
               </tr>
               <tr class="cat-wellness">
-                <td><span class="time-badge">4–8pm</span></td>
+                <td><span class="time-badge">4:00–8:00pm</span></td>
                 <td>Newtown Cove</td>
-                <td><strong>The Hot Pod Sauna</strong><br><span class="detail">30-minute sauna sessions at Newtown Cove / The Guillamene</span></td>
-                <td><span class="cost-paid">€10</span><br><span class="booking"><a href="http://www.thehotpod.ie" target="_blank">www.thehotpod.ie</a></span></td>
+                <td><strong>The Hot Pod Sauna</strong><br><span class="detail">30-minute sauna sessions at Newtown Cove</span></td>
+                <td><span class="cost-paid">€10</span><br><span class="booking"><a href="http://www.thehotpod.ie" target="_blank">Book Now</a></span></td>
               </tr>
               <tr class="cat-music">
-                <td><span class="time-badge">5–6pm</span></td>
+                <td><span class="time-badge">5:00–6:00pm</span></td>
                 <td>The Library</td>
                 <td><strong>Irish Music Session</strong><br><span class="detail">With Ritchie McDonald and company</span></td>
-                <td><span class="cost-free">Free</span><span class="booking">No booking required</span></td>
+                <td><span class="cost-free">Free</span><span class="booking">Drop-in</span></td>
               </tr>
               <tr class="cat-wellness">
                 <td><span class="time-badge">5:30pm</span></td>
                 <td>Tramore Beach</td>
                 <td><strong>Evening Yoga on the Beach</strong><br><span class="detail">With Karen from Tidal Soul Wellness</span></td>
-                <td><span class="cost-free">Free</span><span class="booking">No booking required</span></td>
+                <td><span class="cost-free">Free</span><span class="booking">Drop-in</span></td>
+              </tr>
+              <tr class="cat-food">
+                <td><span class="time-badge">5:30pm</span></td>
+                <td>Seagull Bakery</td>
+                <td><strong>Seagull Mumbai Crossover</strong><br><span class="detail">Vishal from Mumbai pop-up</span></td>
+                <td><span class="cost-paid">POA</span><span class="booking">Contact Seagull</span></td>
               </tr>
               <tr class="cat-music">
-                <td><span class="time-badge">6–8pm</span></td>
-                <td>The Pavilion</td>
+                <td><span class="time-badge">6:00–8:00pm</span></td>
+                <td>The Pav</td>
                 <td><strong>Pottery Night Out</strong><br><span class="detail">With Clare Blount &amp; Tramore Pottery. Join Tramore Pottery for a relaxed
                     evening of creativity and fun beside the sea, where they will guide you through making a
                     framed diorama inspired by the beach and Vitamin Sea.
                     With optional sauna afterwards at The Stove Sauna to help relax the arms post workshop!</span></td>
-                <td><span class="cost-paid">€62</span><br><span class="booking"><a href="http://www.tramorepottery.ie" target="_blank">www.tramorepottery.ie</a></span></td>
+                <td><span class="cost-paid">€62</span><br><span class="booking"><a href="http://www.tramorepottery.ie" target="_blank">Book Now</a></span></td>
               </tr>
               <tr class="cat-food">
                 <td><span class="time-badge">7:00pm</span></td>
                 <td>Mezze</td>
                 <td><strong>Middle Eastern Barbecue Workshop</strong><br><span class="detail">Hands-on cooking workshop</span></td>
-                <td><span class="cost-paid">€105</span><br><span class="booking"><a href="http://www.mezze.ie" target="_blank">www.mezze.ie</a></span></td>
+                <td><span class="cost-paid">€105</span><br><span class="booking"><a href="http://www.mezze.ie" target="_blank">Book Now</a></span></td>
               </tr>
               <tr class="cat-food">
                 <td><span class="time-badge">7:00pm</span></td>
                 <td>The Majestic Hotel</td>
                 <td><strong>Spanish Wine Tasting &amp; Food Pairings</strong><br><span class="detail">Curated Spanish wine tasting paired with authentic tapas dishes. A relaxed evening of beautiful wines, vibrant flavours and Mediterranean
                     charm</span></td>
-                <td><span class="cost-paid">€50 p/p</span><br><span class="booking"><a href="https://www.eventbrite.co.uk/e/vitamin-sea-festival-spanish-wine-tasting-food-pairing-tickets-1990589279119?aff=oddtdtcreator" target="_blank">Click to
-                      book</a></span></td>
+                <td><span class="cost-paid">€50</span><br><span class="booking"><a href="https://www.eventbrite.co.uk/e/vitamin-sea-festival-spanish-wine-tasting-food-pairing-tickets-1990589279119?aff=oddtdtcreator" target="_blank">Book Now</a></span></td>
               </tr>
             </tbody>
           </table>
@@ -1747,193 +1783,223 @@
                 <th class="col-time">Time</th>
                 <th class="col-location">Location</th>
                 <th class="col-activity">Activity</th>
-                <th class="col-cost">Cost</th>
+                <th class="col-cost"><span class="desktop-label">Cost & Booking</span><span class="mobile-label">Cost & Book</span></th>
               </tr>
             </thead>
             <tbody>
+              <tr class="cat-music">
+                <td><span class="time-badge">All day</span></td>
+                <td>Amusement Park / Prom</td>
+                <td><strong>Celtic Wood Carvers Demonstration</strong><br><span class="detail">Six Irish champion wood carvers led by Tramore's John Hayes, in collaboration with Tramore Tidy Towns</span></td>
+                <td><span class="cost-free">Free</span><span class="booking">Drop-in</span></td>
+              </tr>
+              <tr class="cat-music">
+                <td><span class="time-badge">All day</span></td>
+                <td>Amusement Park / Prom</td>
+                <td><strong>Family Fun on the Beach and Prom</strong><br><span class="detail">Giant X's &amp; O's, cornhole, egg &amp; spoon, wheelbarrow race, 3-legged race &amp; sprints</span></td>
+                <td><span class="cost-free">Free</span><span class="booking">Drop-in</span></td>
+              </tr>
               <tr class="cat-wellness">
                 <td><span class="time-badge">6:15–7:45am</span></td>
-                <td>Newtown Cove / Guillamene</td>
+                <td>Newtown Cove</td>
                 <td><strong>Sunrise Yoga, Sauna &amp; Breakfast</strong><br><span class="detail">Tidal Soul Wellness with Seabrew &amp; the Hot Pod. 30-min yoga with Karen, followed by 30-min sauna, then granola breakfast from Seabrew</span></td>
-                <td><span class="cost-paid">€30</span><br><span class="booking"><a href="http://www.thehotpod.ie" target="_blank">www.thehotpod.ie</a></span></td>
+                <td><span class="cost-paid">€30</span><br><span class="booking"><a href="http://www.thehotpod.ie" target="_blank">Book Now</a></span></td>
               </tr>
               <tr class="cat-wellness">
                 <td><span class="time-badge">6:30am</span></td>
                 <td>Tramore Beach</td>
                 <td><strong>108 Sun Salutations</strong><br><span class="detail">With Yoga by Ginni</span></td>
-                <td><span class="cost-free">Free</span></td>
+                <td><span class="cost-free">Free</span><br><span class="booking"><a href="https://yogawithginni.com/services/upcoming/" target="_blank">Book Now</a></span></td>
               </tr>
               <tr class="cat-water">
-                <td><span class="time-badge">7–9am</span></td>
+                <td><span class="time-badge">7:00–9:00am</span></td>
                 <td>Newtown Cove</td>
-                <td><strong>Sunrise Stand Up Paddle Board &amp; Breakfast</strong><br><span class="detail">With Surf SUP Tramore and Chez Munchez</span></td>
-                <td><span class="cost-paid">€50</span><br><span class="booking">Contact Niall: 085 266 2592</span></td>
+                <td><strong>Sunrise Stand Up Paddle Board &amp; Breakfast</strong><br><span class="detail">With Surf & SUP Tramore and Chez Munchez</span></td>
+                <td><span class="cost-paid">€50</span><br><span class="booking">Niall: 085 266 2592</span></td>
               </tr>
               <tr class="cat-wellness">
-                <td><span class="time-badge">7am–5pm</span></td>
-                <td>Tramore Prom</td>
-                <td><strong>The Stove Sauna</strong><br><span class="detail">Open all day. Private enclosure with cold plunge barrels at The Pavilion (beside Brooklyn). Special Vitamin Sea rate</span></td>
-                <td><span class="cost-paid">€12.50</span><span class="detail"> (normally €17)</span><span class="booking"><a href="https://thestovesauna.rezgo.com/details/396385/tramore-sauna" target="_blank">Click to book</a></span></td>
+                <td><span class="time-badge">7:00am–5:00pm</span></td>
+                <td>The Pav</td>
+                <td><strong>The Stove Sauna</strong><br><span class="detail">Open all day. Private enclosure with cold plunge barrels at The Pavillion (beside Brooklyn). Special Vitamin Sea rate</span></td>
+                <td><span class="cost-paid">€12.50</span><br><span class="booking"><a href="https://thestovesauna.rezgo.com/details/396385/tramore-sauna" target="_blank">Book Now</a></span></td>
+              </tr>
+              <tr class="cat-wellness">
+                <td><span class="time-badge">8:30am–6:00pm</span></td>
+                <td>Newtown Cove</td>
+                <td><strong>The Hot Pod Sauna</strong><br><span class="detail">30-minute sauna sessions at The Guillamene</span></td>
+                <td><span class="cost-paid">€10</span><br><span class="booking"><a href="http://www.thehotpod.ie" target="_blank">Book Now</a></span></td>
               </tr>
               <tr class="cat-wellness">
                 <td><span class="time-badge">9:00am</span></td>
                 <td>Gym outside Splashworld</td>
-                <td><strong>Calisthenic Workout</strong><br><span class="detail">With Cillian Bonnar</span></td>
-                <td><span class="cost-free">Free</span></td>
+                <td><strong>Calisthenic Workout</strong><br><span class="detail">With Cillian Bonnar from Full Rotation Fitness</span></td>
+                <td><span class="cost-free">Free</span><span class="booking">Drop-in</span></td>
               </tr>
               <tr class="cat-wellness">
                 <td><span class="time-badge">9:00am</span></td>
                 <td>Tramore Prom</td>
-                <td><strong>Pre-Parkrun Activation</strong><br><span class="detail">With Grace Russell. Core activation, dynamic mobility &amp; lymphatic warm-up</span></td>
-                <td><span class="cost-free">Free</span></td>
-              </tr>
-              <tr class="cat-wellness">
-                <td><span class="time-badge">9:30am</span></td>
-                <td>Tramore Prom</td>
-                <td><strong>Park Run</strong></td>
-                <td><span class="cost-free">Free</span></td>
-              </tr>
-              <tr class="cat-wellness">
-                <td><span class="time-badge">10:15am</span></td>
-                <td>Tramore Prom</td>
-                <td><strong>Post-Parkrun Recovery</strong><br><span class="detail">Guided cooldown, lymphatic drainage movement &amp; nervous system down-regulation</span></td>
-                <td><span class="cost-free">Free</span></td>
-              </tr>
-              <tr class="cat-wellness">
-                <td><span class="time-badge">8:30am–6pm</span></td>
-                <td>Newtown Cove</td>
-                <td><strong>The Hot Pod Sauna</strong><br><span class="detail">30-minute sauna sessions at The Guillamene</span></td>
-                <td><span class="cost-paid">€10</span><br><span class="booking"><a href="http://www.thehotpod.ie" target="_blank">www.thehotpod.ie</a></span></td>
+                <td><strong>Pre-Parkrun Activation</strong><br><span class="detail">With Grace Russell. Core activation, dynamic mobility &amp; lymphatic warm-up. All welcome to join in</span></td>
+                <td><span class="cost-free">Free</span><span class="booking">Drop-in</span></td>
               </tr>
               <tr class="cat-food">
-                <td><span class="time-badge">9am–2pm</span></td>
+                <td><span class="time-badge">9:00–11:00am</span></td>
+                <td>Unbeetable Food</td>
+                <td><strong>Steps, Stretch and Brunch’</strong><br><span class="detail">With Maggie M O’Neill and Unbeetable Food</span></td>
+                <td><span class="cost-paid">€22</span><br><span class="booking"><a href="https://www.instagram.com/maggie_m_yoga/" target="_blank">Book via PM</a></td>
+              </tr>
+              <tr class="cat-food">
+                <td><span class="time-badge">9:00am–2:00pm</span></td>
                 <td>Priests Road</td>
                 <td><strong>Weekly Farmer's Market</strong><br><span class="detail">Tramore church car park. Local produce, organic groceries and crafts</span></td>
                 <td><span class="cost-paygo">Pay as you go</span></td>
               </tr>
               <tr class="cat-wellness">
+                <td><span class="time-badge">9:30am</span></td>
+                <td>Tramore Prom</td>
+                <td><strong>Park Run</strong></td>
+                <td><span class="cost-free">Free</span><br><span class="booking"><a href="https://www.parkrun.ie/register/?eventName=tramore" target="_blank">Register Now</a></td>
+              </tr>
+              <tr class="cat-wellness">
+                <td><span class="time-badge">10:15am</span></td>
+                <td>Tramore Prom</td>
+                <td><strong>Post-Parkrun Recovery</strong><br><span class="detail">With Grace Russell. Guided cooldown, lymphatic drainage movement &amp; nervous system down-regulation. All welcome to join in</span></td>
+                <td><span class="cost-free">Free</span><span class="booking">Drop-in</span></td>
+              </tr>
+              <tr class="cat-wellness">
                 <td><span class="time-badge">11:00am</span></td>
                 <td>Tramore Beach</td>
-                <td><strong>Pilates</strong><br><span class="detail">With Move with Clodagh</span></td>
-                <td><span class="cost-free">Free</span></td>
+                <td><strong>Beach Pilates for All</strong><br><span class="detail">With Clodagh</span></td>
+                <td><span class="cost-free">Free</span><span class="booking">Drop-in</span></td>
               </tr>
               <tr class="cat-music">
                 <td><span class="time-badge">11:00am</span></td>
                 <td>Lower Prom</td>
-                <td><strong>The Kicking Stone Launch Ceremony</strong><br><span class="detail">Performance by Freedom Dance School. Free craft workshops where participants create fun foot coverings. Workshops at 10:30am, 2pm &amp; 3pm</span></td>
-                <td><span class="cost-free">Free</span></td>
-              </tr>
-              <tr class="cat-food">
-                <td><span class="time-badge">12–8pm</span></td>
-                <td>See map</td>
-                <td><strong>Festival Themed Menus</strong><br><span class="detail">Across all restaurants, food huts, cafes &amp; bars in Tramore</span></td>
-                <td><span class="cost-paygo">Pay as you go</span></td>
+                <td><strong>The Kicking Stone Launch Ceremony</strong><br><span class="detail">The Kicking Stone is a new sculpture at the end of Tramore Prom, inviting visitors to mark the end
+of their walk, or the beginning of their beach adventure, with a playful kick.
+The launch event will feature a performance by Freedom Dance School and free craft workshops
+where participants can create fun foot coverings for their first kick at 10.30am, 2pm and 3pm</span></td>
+                <td><span class="cost-free">Free</span><span class="booking">Drop-in</span></td>
               </tr>
               <tr class="cat-wellness">
-                <td><span class="time-badge">12pm</span></td>
-                <td>The Green at Tramore Heights</td>
+                <td><span class="time-badge">12:00pm</span></td>
+                <td>The Green by Boating Lake near Splashworld</td>
                 <td><strong>Family Yoga &amp; Picnic</strong><br><span class="detail">With Karen from Tidal Soul Wellness</span></td>
-                <td><span class="cost-free">Free</span></td>
+                <td><span class="cost-paid">€8</span><br><span class="booking"><a href="https://tidal-soul-wellness.sumupstore.com/category/events" target="_blank">Book Now</a></span></td>
+              </tr>
+              <tr class="cat-music">
+                <td><span class="time-badge">12:00pm</span></td>
+                <td>Tramore Prom</td>
+                <td><strong>Tramore Community Choir</strong></td>
+                <td><span class="cost-free">Free</span><br><span class="booking">Drop-in</span></td>
               </tr>
               <tr class="cat-water">
                 <td><span class="time-badge">12–2pm &amp; 6–8pm</span></td>
                 <td>Newtown Cove</td>
-                <td><strong>Stand Up Paddle Board &amp; Pizza</strong><br><span class="detail">With Surf SUP Tramore and pizza from The Shack at the Ritz</span></td>
-                <td><span class="cost-paid">€55</span><br><span class="booking">Contact Niall: 085 266 2592</span></td>
+                <td><strong>Stand Up Paddle Board &amp; Pizza</strong><br><span class="detail">With Surf & SUP Tramore and pizza from The Shack at the Ritz</span></td>
+                <td><span class="cost-paid">€55</span><br><span class="booking">Niall: 085 266 2592</span></td>
               </tr>
               <tr class="cat-music">
-                <td><span class="time-badge">12–2pm</span></td>
-                <td>Tramore Beach</td>
-                <td><strong>Kite Flying Fun</strong><br><span class="detail">Family &amp; friends kite flying</span></td>
-                <td><span class="cost-free">Free</span></td>
+                <td><span class="time-badge">12:00–2:00pm</span></td>
+                <td>The Pav</td>
+                <td><strong>Kite Flying Fun</strong><br><span class="detail">Family &amp; friends kite flying. Bring your own kite or borrow one at the beach</span></td>
+                <td><span class="cost-free">Free</span><br><span class="booking">Drop-in</span></td>
               </tr>
               <tr class="cat-music">
-                <td><span class="time-badge">12pm</span></td>
-                <td>Tramore Prom</td>
-                <td><strong>Tramore Community Choir</strong></td>
-                <td><span class="cost-free">Free</span></td>
+                <td><span class="time-badge">12:00-3:00pm</span></td>
+                <td>The Pav</td>
+                <td><strong>Free Drop-in Workshops</strong><br><span class="detail">Aromatherapy · Scrubs · ⁠Drum Circle · Kids activities</span></td>
+                <td><span class="cost-free">Free</span><span class="booking">Drop-in</span></td>
               </tr>
               <tr class="cat-food">
-                <td><span class="time-badge">1–5pm</span></td>
+                <td><span class="time-badge">12:00–8:00pm</span></td>
+                <td>Throughout Tramore</td>
+                <td><strong>Festival Themed Menus</strong><br><span class="detail">Across all restaurants, food huts, cafes &amp; bars in Tramore</span></td>
+                <td><span class="cost-paygo">Pay as you go</span></td>
+              </tr>
+              <tr class="cat-food">
+                <td><span class="time-badge">12:30–1:00pm</span></td>
+                <td>Tramore Prom</td>
+                <td><strong>Demo &amp; Chats with Judit</strong><br><span class="detail">From Cocoa by Judit. Maybe get to sample
+some delicious chocolate</span></td>
+                <td><span class="cost-free">Free</span><br><span class="booking">Drop-in</span></td>
+              </tr>
+              <tr class="cat-music">
+                <td><span class="time-badge">1:00pm</span></td>
+                <td>Tramore Prom</td>
+                <td><strong>Kitty Caboodle</strong><br><span class="detail">Songs and stories for everyone</span></td>
+                <td><span class="cost-free">Free</span><br><span class="booking">Drop-in</span></td>
+              </tr>
+              <tr class="cat-food">
+                <td><span class="time-badge">1:00–3:00pm</span></td>
+                <td>Tramore Town</td>
+                <td><strong>Tramore Tapas Taste Trail</strong><br><span class="detail">5 items for €30 across Mezze · Lemon Drop · Poquitto · Seagull · The Vee</span></td>
+                <td><span class="cost-paid">€30</span></td>
+              </tr>
+              <tr class="cat-music">
+                <td><span class="time-badge">1:00–3:00pm</span></td>
+                <td>Tramore Plaza</td>
+                <td><strong>Gavin the Piano Man</strong></td>
+                <td><span class="cost-free">Free</span><br><span class="booking">Drop-in</span></td>
+              </tr>
+              <tr class="cat-food">
+                <td><span class="time-badge">1:00–5:00pm</span></td>
                 <td>Tramore Prom</td>
                 <td><strong>Food Markets &amp; Stalls</strong><br><span class="detail">Little Catch · Tiramisu de Costa · Majestic Hotel · Bella Napoli Pizza · Cocoa by Judit · The Vee · Couch to Cave · Birdies Café · Indian Street Food · I Spy
                     Swimwear · Kevin Doyle Photography · Keane Wood Crafts · Garden of Yeadon · Crave Cookies · Tramore Tidy Towns · Tramore Eco Group · Spirit Readings</span></td>
                 <td><span class="cost-paygo">Pay as you go</span></td>
               </tr>
-              <tr class="cat-music">
-                <td><span class="time-badge">12:30–1pm</span></td>
-                <td>Tramore Prom</td>
-                <td><strong>Demo &amp; Chats with Judit</strong><br><span class="detail">From Cocoa by Judit</span></td>
-                <td><span class="cost-free">Free</span></td>
-              </tr>
               <tr class="cat-food">
-                <td><span class="time-badge">1–3pm</span></td>
-                <td>Tramore Town</td>
-                <td><strong>Tramore Tapas Taste Trail</strong><br><span class="detail">5 items for €30 across Mezze · Lemon Drop · Poquitto · Seagull · The Vee</span></td>
-                <td><span class="cost-paid">€30 p/p</span></td>
-              </tr>
-              <tr class="cat-music">
-                <td><span class="time-badge">1–3pm</span></td>
-                <td>Tramore Plaza</td>
-                <td><strong>Gavin the Piano Man</strong></td>
-                <td><span class="cost-free">Free</span></td>
-              </tr>
-              <tr class="cat-music">
-                <td><span class="time-badge">1pm</span></td>
+                <td><span class="time-badge">2:00pm</span></td>
                 <td>Tramore Prom</td>
-                <td><strong>Kitty Caboodle</strong><br><span class="detail">Songs and stories for everyone</span></td>
-                <td><span class="cost-free">Free</span></td>
-              </tr>
-              <tr class="cat-food">
-                <td><span class="time-badge">2pm</span></td>
-                <td>Tramore Prom</td>
-                <td><strong>Vitamins in Our Ocean Superfood – Seaweeds</strong><br><span class="detail">With Marie Power, The Sea Gardener. Learn about vitamins, minerals and the wonders of seaweed</span></td>
-                <td><span class="cost-free">Free</span></td>
+                <td><strong>Vitamin C (and A,B,D and E) in our Ocean Superfood</strong><br><span class="detail">With Marie Power, The Sea Gardener. Learn about vitamins, minerals and the wonders of seaweed</span></td>
+                <td><span class="cost-free">Free</span><br><span class="booking">Drop-in</span></td>
               </tr>
               <tr class="cat-music">
-                <td><span class="time-badge">2–4pm</span></td>
+                <td><span class="time-badge">2:00–4:00pm</span></td>
                 <td>Tramore Prom</td>
-                <td><strong>Saima Henna</strong><span class="detail">Freehand henna tattoos</span></td>
-                <td><span class="cost-free">Free</span></td>
+                <td><strong>Saima Henna</strong><span class="detail">Free hand henna tattoos</span></td>
+                <td><span class="cost-free">Free</span><br><span class="booking">Drop-in</span></td>
               </tr>
               <tr class="cat-music">
-                <td><span class="time-badge">3–5pm</span></td>
+                <td><span class="time-badge">3:00–5:00pm</span></td>
                 <td>Tramore Beach</td>
                 <td><strong>DJ on the Beach</strong></td>
-                <td><span class="cost-free">Free</span></td>
-              </tr>
-              <tr class="cat-music">
-                <td><span class="time-badge">All day</span></td>
-                <td>Amusement Park / Prom</td>
-                <td><strong>Celtic Wood Carvers Demonstration</strong><br><span class="detail">Six Irish champion wood carvers led by Tramore's John Hayes. Also: beach games – X's &amp; O's, cornhole, egg &amp; spoon, 3-legged race &amp;
-                    sprints</span></td>
-                <td><span class="cost-free">Free</span></td>
+                <td><span class="cost-free">Free</span><br><span class="booking">Drop-in</span></td>
               </tr>
               <tr class="cat-water">
-                <td><span class="time-badge">4pm</span></td>
+                <td><span class="time-badge">4:00pm</span></td>
                 <td>Garrarus Beach</td>
                 <td><strong>Mini-Forage at Garrarus Strand</strong><br><span class="detail">With Marie Power, The Sea Gardener. Introduction to edible seaweeds on the Waterford coast. Waterproof &amp; non-slip footwear required. Max 25 people</span>
                 </td>
-                <td><span class="cost-free">Free</span><br><span class="booking">Book via website</span></td>
+                <td><span class="cost-free">Free</span><br><span class="booking"><a href="https://www.eventbrite.ie/e/mini-forage-at-garrarus-strand-with-marie-power-the-sea-gardener-tickets-1990594023309?aff=oddtdtcreator&keep_tld=true" target="_blank">Book Now</a></span></td>
               </tr>
               <tr class="cat-music">
-                <td><span class="time-badge">4–8pm</span></td>
-                <td>The Pavilion</td>
-                <td><strong>The Pavilion Official Launch Night</strong><br><span class="detail">Music, DJs &amp; BBQ celebrating the launch of the new community hub at the Pavilion. Merch on sale, sauna options at The Stove Sauna adjacent</span>
+                <td><span class="time-badge">4:00–8:00pm</span></td>
+                <td>The Pav</td>
+                <td><strong>Block Party at the Pav</strong><br><span class="detail">Music · DJs · BBQ · Craft and Merch stalls to celebrate the launch of the new community hub at the Pavillion, Tramore</span>
                 </td>
-                <td><span class="cost-free">Free</span></td>
+                <td><span class="cost-free">Free</span><br><span class="booking">Drop-in</span></td>
               </tr>
               <tr class="cat-food">
-                <td><span class="time-badge">7pm</span></td>
+                <td><span class="time-badge">5:30pm</span></td>
+                <td>Seagull Bakery</td>
+                <td><strong>Seagull Mumbai Crossover</strong><br><span class="detail">Vishal from Mumbai pop-up</span></td>
+                <td><span class="cost-paid">POA</span><span class="booking">Contact Seagull</span></td>
+              </tr>
+              <tr class="cat-food">
+                <td><span class="time-badge">6:00pm &amp; 8.15pm</span></td>
                 <td>Mezze</td>
-                <td><strong>Coastal Market Night</strong><br><span class="detail">An evening inspired by the buzz of Middle Eastern markets. Fish &amp; seafood, seasonal salads, dips, breads and sweet finishes</span></td>
-                <td><span class="cost-paygo">See website</span><br><span class="booking"><a href="http://www.mezze.ie" target="_blank">www.mezze.ie</a></span></td>
+                <td><strong>Coastal Market Night</strong><br><span class="detail">Join Mezze for an evening inspired by the buzz of Middle Eastern markets—big flavours and
+generous sharing plates.
+We’ll be serving a feast of small plates with a coastal theme. Expect fish and seafood, seasonal
+salads, dips, breads, and sweet finishes</span></td>
+                <td><span class="cost-paid">€45</span><br><span class="booking"><a href="http://www.mezze.ie" target="_blank">Book Now</a></span></td>
               </tr>
               <tr class="cat-food">
-                <td><span class="time-badge">7pm</span></td>
+                <td><span class="time-badge">7:00pm</span></td>
                 <td>The Majestic Hotel</td>
                 <td><strong>Spanish Wine Tasting &amp; Food Pairings</strong><br><span class="detail">Curated Spanish wine tasting with authentic tapas. A relaxed evening of beautiful wines and Mediterranean charm</span></td>
-                <td><span class="cost-paid">€50 p/p</span><br><span class="booking">051-381761 · <a href="http://www.majestic-hotel.ie" target="_blank">majestic-hotel.ie</a></span></td>
+                <td><span class="cost-paid">€50</span><br><span class="booking"><a href="https://www.eventbrite.co.uk/e/saturday-spanish-wine-tasting-food-pairing-with-vitamin-sea-festival-tickets-1990948516608?aff=oddtdtcreator" target="_blank">Book Now</a></span></td>
               </tr>
             </tbody>
           </table>
@@ -1949,93 +2015,104 @@
                 <th class="col-time">Time</th>
                 <th class="col-location">Location</th>
                 <th class="col-activity">Activity</th>
-                <th class="col-cost">Cost</th>
+                <th class="col-cost"><span class="desktop-label">Cost & Booking</span><span class="mobile-label">Cost & Book</span></th>
               </tr>
             </thead>
             <tbody>
-              <tr class="cat-wellness">
-                <td><span class="time-badge">6:15–7:45am</span></td>
-                <td>Newtown Cove / Guillamene</td>
-                <td><strong>Sunrise Yoga, Sauna &amp; Breakfast</strong><br><span class="detail">Tidal Soul Wellness with Seabrew &amp; the Hot Pod. 30-min yoga with Karen, sauna session, then granola breakfast from Seabrew</span></td>
-                <td><span class="cost-paid">€30</span><br><span class="booking"><a href="http://www.thehotpod.ie" target="_blank">www.thehotpod.ie</a></span></td>
+              <tr class="cat-music">
+                <td><span class="time-badge">All day</span></td>
+                <td>Amusement Park / Prom</td>
+                <td><strong>Celtic Wood Carvers Demonstration</strong><br><span class="detail">Six Irish champion wood carvers led by Tramore's John Hayes, in collaboration with Tramore Tidy Towns</span></td>
+                <td><span class="cost-free">Free</span><span class="booking">Drop-in</span></td>
+              </tr>
+              <tr class="cat-music">
+                <td><span class="time-badge">All day</span></td>
+                <td>Amusement Park / Prom</td>
+                <td><strong>Family Fun on the Beach and Prom</strong><br><span class="detail">Giant X's &amp; O's, cornhole, egg &amp; spoon, wheelbarrow race, 3-legged race &amp; sprints</span></td>
+                <td><span class="cost-free">Free</span><span class="booking">Drop-in</span></td>
               </tr>
               <tr class="cat-wellness">
-                <td><span class="time-badge">7am</span></td>
+                <td><span class="time-badge">6:15–7:45am</span></td>
+                <td>Newtown Cove</td>
+                <td><strong>Sunrise Yoga, Sauna &amp; Breakfast</strong><br><span class="detail">Tidal Soul Wellness with Seabrew &amp; the Hot Pod. 30-min yoga with Karen, sauna session, then granola breakfast from Seabrew</span></td>
+                <td><span class="cost-paid">€30</span><br><span class="booking"><a href="http://www.thehotpod.ie" target="_blank">Book Now</a></span></td>
+              </tr>
+              <tr class="cat-wellness">
+                <td><span class="time-badge">7:00am</span></td>
                 <td>Tramore Beach</td>
                 <td><strong>'Wake Up and Feel Alive' Yoga</strong><br><span class="detail">With Fiona Power</span></td>
-                <td><span class="cost-free">Free</span></td>
+                <td><span class="cost-free">Free</span><br><span class="booking">Drop-in</span></td>
+              </tr>
+              <tr class="cat-water">
+                <td><span class="time-badge">7:00–9:00am</span></td>
+                <td>Newtown Cove</td>
+                <td><strong>Sunrise Stand Up Paddle Board &amp; Breakfast</strong><br><span class="detail">With Surf & SUP Tramore and Chez Munchez</span></td>
+                <td><span class="cost-paid">€50</span><br><span class="booking">Niall: 085 266 2592</span></td>
               </tr>
               <tr class="cat-food">
                 <td><span class="time-badge">7:30–9:30am</span></td>
                 <td>Tramore Prom</td>
                 <td><strong>Overnight Oats &amp; Bakes Pop-Up</strong><br><span class="detail">With Slow and Steady Eats on the beach</span></td>
-                <td><span class="cost-free">Free to class attendees</span></td>
-              </tr>
-              <tr class="cat-water">
-                <td><span class="time-badge">7–9am</span></td>
-                <td>Newtown Cove</td>
-                <td><strong>Sunrise Stand Up Paddle Board &amp; Breakfast</strong><br><span class="detail">With Surf SUP Tramore and Chez Munchez</span></td>
-                <td><span class="cost-paid">€50</span><br><span class="booking">Contact Niall: 085 266 2592</span></td>
+                <td><span class="cost-free">Free</span><br><span class="booking">Drop-in</span></td>
               </tr>
               <tr class="cat-wellness">
-                <td><span class="time-badge">8am</span></td>
+                <td><span class="time-badge">8:00am</span></td>
                 <td>Tramore Beach</td>
                 <td><strong>Pilates Flow on the Beach</strong><br><span class="detail">With Grainne O'Driscoll — wake up your body and focus your mind</span></td>
-                <td><span class="cost-free">Free</span></td>
+                <td><span class="cost-free">Free</span><br><span class="booking">Drop-in</span></td>
               </tr>
               <tr class="cat-wellness">
-                <td><span class="time-badge">9am</span></td>
-                <td>Tramore Beach</td>
-                <td><strong>Wake &amp; Shake</strong><br><span class="detail">With Sinead Corcoran. Energising sunrise beach workout combining movement, strength and sea air</span></td>
-                <td><span class="cost-free">Free</span></td>
-              </tr>
-              <tr class="cat-wellness">
-                <td><span class="time-badge">10am</span></td>
-                <td>Gym outside Splashworld</td>
-                <td><strong>Calisthenic Workout</strong><br><span class="detail">With Cillian Bonnar</span></td>
-                <td><span class="cost-free">Free</span></td>
-              </tr>
-              <tr class="cat-food">
-                <td><span class="time-badge">9am–1pm</span></td>
-                <td>Mezze</td>
-                <td><strong>Middle Eastern Brunch</strong><br><span class="detail">Vibrant sharing plates: shakshuka, focaccia, labneh, fresh salads, pastries &amp; seasonal fruit. Optional morning dip at Ladies Slip beforehand</span></td>
-                <td><span class="cost-paid">€30</span><br><span class="booking"><a href="http://www.mezze.ie" target="_blank">www.mezze.ie</a></span></td>
-              </tr>
-              <tr class="cat-wellness">
-                <td><span class="time-badge">8:30am–4pm</span></td>
+                <td><span class="time-badge">8:30am–4:00pm</span></td>
                 <td>Newtown Cove</td>
                 <td><strong>The Hot Pod Sauna</strong><br><span class="detail">30-minute sauna sessions at The Guillamene</span></td>
-                <td><span class="cost-paid">€10</span><br><span class="booking"><a href="http://www.thehotpod.ie" target="_blank">www.thehotpod.ie</a></span></td>
+                <td><span class="cost-paid">€10</span><br><span class="booking"><a href="http://www.thehotpod.ie" target="_blank">Book Now</a></span></td>
               </tr>
               <tr class="cat-wellness">
-                <td><span class="time-badge">9am–5pm</span></td>
-                <td>Tramore Prom</td>
-                <td><strong>The Stove Sauna</strong><br><span class="detail">Open all day. Private enclosure with cold plunge barrels. Special Vitamin Sea festival rate</span></td>
-                <td><span class="cost-paid">€12.50</span><span class="detail"> (normally €17)</span><span class="booking"><a href="https://thestovesauna.rezgo.com/details/396385/tramore-sauna" target="_blank">Click to book</a></span></td>
-              </tr>
-              <tr class="cat-music">
-                <td><span class="time-badge">12–2pm</span></td>
+                <td><span class="time-badge">9:00am</span></td>
                 <td>Tramore Beach</td>
-                <td><strong>Kite Flying Fun</strong><br><span class="detail">Family &amp; friends kite flying</span></td>
-                <td><span class="cost-free">Free</span></td>
+                <td><strong>Wake &amp; Shake</strong><br><span class="detail">With Sinead Corcoran. Energising sunrise beach workout combining movement, strength and sea air</span></td>
+                <td><span class="cost-free">Free</span><br><span class="booking">Drop-in</span></td>
               </tr>
               <tr class="cat-food">
-                <td><span class="time-badge">12–8pm</span></td>
-                <td>See map</td>
-                <td><strong>Festival Themed Menus</strong><br><span class="detail">Across all restaurants, food huts, cafes &amp; bars in Tramore</span></td>
-                <td><span class="cost-paygo">Pay as you go</span></td>
+                <td><span class="time-badge">9:00am–1:00pm</span></td>
+                <td>Mezze</td>
+                <td><strong>Middle Eastern Brunch</strong><br><span class="detail">Vibrant sharing plates: shakshuka, focaccia, labneh, fresh salads, pastries &amp; seasonal fruit. Optional morning dip at Ladies Slip beforehand</span></td>
+                <td><span class="cost-paid">€30</span><br><span class="booking"><a href="http://www.mezze.ie" target="_blank">Book Now</a></span></td>
+              </tr>
+              <tr class="cat-wellness">
+                <td><span class="time-badge">9:00am–5:00pm</span></td>
+                <td>The Pav</td>
+                <td><strong>The Stove Sauna</strong><br><span class="detail">Open all day. Private enclosure with cold plunge barrels. Special Vitamin Sea festival rate</span></td>
+                <td><span class="cost-paid">€12.50</span><span class="booking"><a href="https://thestovesauna.rezgo.com/details/396385/tramore-sauna" target="_blank">Book Now</a></span></td>
+              </tr>
+              <tr class="cat-wellness">
+                <td><span class="time-badge">10:00am</span></td>
+                <td>Gym outside Splashworld</td>
+                <td><strong>Calisthenic Workout</strong><br><span class="detail">With Cillian Bonnar</span></td>
+                <td><span class="cost-free">Free</span><br><span class="booking">Drop-in</span></td>
+              </tr>
+              <tr class="cat-music">
+                <td><span class="time-badge">12:00–2:00pm</span></td>
+                <td>The Pav</td>
+                <td><strong>Kite Flying Fun</strong><br><span class="detail">Family &amp; friends kite flying</span></td>
+                <td><span class="cost-free">Free</span><br><span class="booking">Drop-in</span></td>
               </tr>
               <tr class="cat-water">
                 <td><span class="time-badge">12–2pm &amp; 6–8pm</span></td>
                 <td>Newtown Cove</td>
-                <td><strong>Stand Up Paddle Board &amp; Pizza</strong><br><span class="detail">With Surf SUP Tramore and The Shack at the Ritz</span></td>
-                <td><span class="cost-paid">€55</span><br><span class="booking">Contact Niall: 085 266 2592</span></td>
+                <td><strong>Stand Up Paddle Board &amp; Pizza</strong><br><span class="detail">With Surf & SUP Tramore and The Shack at the Ritz</span></td>
+                <td><span class="cost-paid">€55</span><br><span class="booking">Niall: 085 266 2592</span></td>
               </tr>
               <tr class="cat-food">
-                <td><span class="time-badge">12–4pm</span></td>
+                <td><span class="time-badge">12:00–4:00pm</span></td>
                 <td>Tramore Prom</td>
-                <td><strong>Produce Markets &amp; Stalls</strong><br><span class="detail">The Petal Stand · Birdies Café · Colours by Shannon · Little Catch · I Spy Swimwear · Bella Napoli Pizza · All In Eats · Garden of Yeadon · Crave Cookies ·
-                    Spirit Readings</span></td>
+                <td><strong>Produce Markets &amp; Stalls</strong><br><span class="detail">The Petal Stand · Birdies Café · Colours by Shannon · Little Catch · I Spy Swimwear · Bella Napoli Pizza · Garden of Yeadon · Crave Cookies · Seafood Sales from Fiona Pender · Angelic Healings with Venessa Power · Tramore GAA Gaelic Football Mothers and Others</span></td>
+                <td><span class="cost-paygo">Pay as you go</span></td>
+              </tr>
+              <tr class="cat-food">
+                <td><span class="time-badge">12:00–8:00pm</span></td>
+                <td>Throughout Tramore</td>
+                <td><strong>Festival Themed Menus</strong><br><span class="detail">Across all restaurants, food huts, cafes &amp; bars in Tramore</span></td>
                 <td><span class="cost-paygo">Pay as you go</span></td>
               </tr>
               <tr class="cat-music">
@@ -2045,64 +2122,55 @@
                 <td><span class="cost-free">First 20 free</span><br><span class="booking">Sponsored by Vitamin Sea Festival</span></td>
               </tr>
               <tr class="cat-wellness">
-                <td><span class="time-badge">1pm</span></td>
+                <td><span class="time-badge">1:00pm</span></td>
                 <td>Tramore Beach</td>
-                <td><strong>"Ground &amp; Restore Flow"</strong><br><span class="detail">With Grace Russell. Post-race recovery: lymphatic movement, gentle stretching, breath-led grounding &amp; restorative poses</span></td>
-                <td><span class="cost-free">Free</span></td>
+                <td><strong>Ground &amp; Restore Flow</strong><br><span class="detail">With Grace Russell. A post Waterford marathon recovery session: lymphatic movement, gentle stretching, breath-led grounding &amp; restorative poses</span></td>
+                <td><span class="cost-free">Free</span><br><span class="booking">Drop-in</span></td>
               </tr>
               <tr class="cat-music">
-                <td><span class="time-badge">1pm</span></td>
+                <td><span class="time-badge">1:00pm</span></td>
                 <td>Coastguard Station</td>
                 <td><strong>Tramore Community Choir</strong></td>
-                <td><span class="cost-free">Free</span></td>
+                <td><span class="cost-free">Free</span><br><span class="booking">Drop-in</span></td>
               </tr>
               <tr class="cat-music">
-                <td><span class="time-badge">1pm</span></td>
+                <td><span class="time-badge">1:00pm</span></td>
                 <td>Tramore Prom</td>
                 <td><strong>Pop-Up Sea Shanty Ukulele Jam</strong><br><span class="detail">No experience required, instruments supplied!</span></td>
-                <td><span class="cost-free">Free</span></td>
-              </tr>
-              <tr class="cat-music">
-                <td><span class="time-badge">All day</span></td>
-                <td>Amusement Park</td>
-                <td><strong>Celtic Wood Carvers Demonstration</strong><br><span class="detail">Six Irish champion wood carvers led by Tramore's John Hayes. Also: prom games all day – X's &amp; O's, cornhole</span></td>
-                <td><span class="cost-free">Free</span></td>
+                <td><span class="cost-free">Free</span><br><span class="booking">Drop-in</span></td>
               </tr>
               <tr class="cat-food">
-                <td><span class="time-badge">2pm</span></td>
+                <td><span class="time-badge">2:00pm</span></td>
                 <td>Tramore Prom</td>
-                <td><strong>Food &amp; Drink Chef Demos &amp; Chats</strong><br><span class="detail">With Norbet Thul · Fiona Byrne (Railway Cottage) · Mathias McGivney. Samples for all in attendance</span></td>
-                <td><span class="cost-free">Free</span></td>
+                <td><strong>Food &amp; Drink Demos &amp; Chats with local Chefs</strong><br><span class="detail">With Norbet Thul · Fiona Byrne (Railway Cottage) · Mathias McGivney. Samples for all in attendance</span></td>
+                <td><span class="cost-free">Free</span><br><span class="booking">Drop-in</span></td>
               </tr>
               <tr class="cat-music">
-                <td><span class="time-badge">3pm</span></td>
+                <td><span class="time-badge">3:00pm</span></td>
                 <td>Tramore Prom</td>
                 <td><strong>Kitty Caboodle</strong><br><span class="detail">Songs and stories for everyone</span></td>
-                <td><span class="cost-free">Free</span></td>
+                <td><span class="cost-free">Free</span><br><span class="booking">Drop-in</span></td>
               </tr>
               <tr class="cat-music">
-                <td><span class="time-badge">4pm</span></td>
+                <td><span class="time-badge">4:00pm</span></td>
                 <td>Tramore Prom</td>
                 <td><strong>Céilí on the Prom</strong><br><span class="detail">Meet us for a céilí with traditional Irish dancers</span></td>
-                <td><span class="cost-free">Free</span></td>
+                <td><span class="cost-free">Free</span><br><span class="booking">Drop-in</span></td>
               </tr>
               <tr class="cat-wellness">
-                <td><span class="time-badge">4pm</span></td>
+                <td><span class="time-badge">4:00pm</span></td>
                 <td>Japanese Gardens</td>
                 <td><strong>"Women's Health, Hormones &amp; the Sea"</strong><br><span class="detail">20–30 min session covering circadian rhythm, cortisol, hormones &amp; 3 practical nutrition/hydration tips</span></td>
-                <td><span class="cost-free">Free</span></td>
+                <td><span class="cost-free">Free</span><br><span class="booking">Drop-in</span></td>
               </tr>
               <tr class="cat-wellness">
-                <td><span class="time-badge">4–6pm</span></td>
-                <td>The Pavilion</td>
-                <td><strong>Electro Yoga with Live DJ</strong><br><span class="detail">Yoga with Karen from Tidal Soul Wellness accompanied by DJ Gav Timlin. Followed by pizza &amp; optional sauna in The Stove Sauna from 6pm</span></td>
-                <td><span class="cost-free">Free</span><span class="detail"> (pizza extra)</span></td>
-              </tr>
-              <tr class="cat-food">
-                <td><span class="time-badge">6pm</span></td>
-                <td>The Majestic Hotel</td>
-                <td><strong>Spanish Wine Tasting &amp; Tapas</strong><br><span class="detail">Curated Spanish wine tasting with authentic tapas. Mediterranean charm to close the festival weekend</span></td>
-                <td><span class="cost-paid">€50 p/p</span><br><span class="booking">051-381761 · <a href="http://www.majestic-hotel.ie" target="_blank">majestic-hotel.ie</a></span></td>
+                <td><span class="time-badge">5:00pm</span></td>
+                <td>The Pav</td>
+                <td><strong>Electro Yoga, Sauna and Pizza</strong><br><span class="detail">Participate in a unique yoga session facilitated by Karen from Tidal Soul Wellness and
+accompanied by local DJ Gav Timlin all in the new community space The Pav overlooking
+Tramore Strand. Yoga will be followed by pizza and optional sauna in the Stove Sauna adjacent
+from 6pm</span></td>
+                <td><span class="cost-paid">€49</span><span class="booking"><a href="https://tidal-soul-wellness.sumupstore.com/category/events" target="_blank">Book Now</a></span></td>
               </tr>
             </tbody>
           </table>
