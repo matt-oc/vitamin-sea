@@ -103,7 +103,7 @@
       box-shadow: none;
     }
 
-    .btn-ticket {
+    .btn-solid {
       background: var(--sunset-gold);
       color: var(--white);
       border: none;
@@ -112,11 +112,12 @@
       font-weight: 600;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      padding: 0.5rem 1.3rem;
+      padding: 0.5rem 1.3rem!important;
       transition: background 0.2s, transform 0.15s;
+      display: inline-block;
     }
 
-    .btn-ticket:hover {
+    .btn-solid:hover {
       background: var(--sunset-coral);
       color: var(--white);
       transform: translateY(-1px);
@@ -967,7 +968,7 @@
       }
 
       .about-section, .programme-section, .location-section, .contact-section, .sponsors-section, .taste-tramore-section {
-         scroll-margin-top:-40px; 
+         scroll-margin-top:-40px;
       }
     }
 
@@ -1544,7 +1545,7 @@
           <li class="nav-item"><a class="nav-link" href="#location">Location</a></li>
           <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
           <li class="nav-item ms-lg-3">
-            <a class="btn btn-ticket" href="#taste-tramore">Taste Tramore</a>
+            <a class="btn btn-solid nav-link" href="#taste-tramore">Taste Tramore</a>
           </li>
         </ul>
       </div>
