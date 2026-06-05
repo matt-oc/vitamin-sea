@@ -455,8 +455,8 @@
 
     /* ── PROGRAMME ─────────────────────────────────────── */
     .mobile-label {
-  display: none;
-}
+      display: none;
+    }
 
     .programme-section {
       background: var(--ocean-deep);
@@ -564,7 +564,7 @@
     /* Table wrapper */
 
     table {
-      border:none !important;
+      border: none !important;
     }
 
     .prog-table-wrap {
@@ -588,7 +588,7 @@
 
     .prog-table thead tr {
       background: var(--ocean-deep);
-      border-left: 5px solid #0D2233;
+      box-shadow: -10px 0px 0px 0px var(--ocean-deep);
     }
 
     .prog-table thead th {
@@ -622,8 +622,8 @@
     }
 
     .prog-table td:nth-child(4) {
-  vertical-align: middle;
-}
+      vertical-align: middle;
+    }
 
     /* Column widths */
     .col-time {
@@ -1325,7 +1325,7 @@
       .prog-table td,
       .prog-table th {
         font-size: 0.78rem;
-        padding: 0.55rem 0.5rem;
+        padding: 0.55rem 0.4rem;
         word-break: break-word;
       }
 
@@ -1353,19 +1353,19 @@
     @media (max-width: 720px) {
 
       .desktop-label {
-    display: none;
-  }
+        display: none;
+      }
 
-  .mobile-label {
-    display: inline;
-  }
+      .mobile-label {
+        display: inline;
+      }
 
       .prog-table thead {
         display: table-header-group;
       }
 
       .prog-table thead th {
-        padding: 1rem .4rem;
+        padding: 1rem .2rem;
         position: sticky;
         top: 115px;
       }
@@ -1379,17 +1379,19 @@
       }
 
       .prog-table thead th:nth-child(1) {
-    flex: 0.7 1 0;
-  }
+        flex: 0.7 1 0;
+        padding: 1rem 1rem;
+      }
 
-  .prog-table thead th:nth-child(2) {
-    flex: 1.15 1 0;
-  }
+      .prog-table thead th:nth-child(2) {
+        flex: 1.15 1 0;
+      }
 
-  .prog-table thead th:nth-child(4) {
-    flex: 1.15 1 0;
-    text-align: right;
-  }
+      .prog-table thead th:nth-child(4) {
+        flex: 1.15 1 0;
+        padding: 1rem 1rem;
+        text-align: right;
+      }
 
       .prog-table tbody tr {
         display: flex;
@@ -1425,6 +1427,7 @@
 
       .prog-table tbody tr>td:nth-child(2) {
         flex: 1.15 1 0;
+        padding: 1rem .2rem;
       }
 
       .prog-table tbody tr>td:nth-child(4) {
@@ -1772,7 +1775,8 @@
                 <td>The Majestic Hotel</td>
                 <td><strong>Spanish Wine Tasting &amp; Food Pairings</strong><br><span class="detail">Curated Spanish wine tasting paired with authentic tapas dishes. A relaxed evening of beautiful wines, vibrant flavours and Mediterranean
                     charm</span></td>
-                <td><span class="cost-paid">€50</span><br><span class="booking"><a href="https://www.eventbrite.co.uk/e/vitamin-sea-festival-spanish-wine-tasting-food-pairing-tickets-1990589279119?aff=oddtdtcreator" target="_blank">Book Now</a></span></td>
+                <td><span class="cost-paid">€50</span><br><span class="booking"><a href="https://www.eventbrite.co.uk/e/vitamin-sea-festival-spanish-wine-tasting-food-pairing-tickets-1990589279119?aff=oddtdtcreator" target="_blank">Book
+                      Now</a></span></td>
               </tr>
             </tbody>
           </table>
@@ -1880,9 +1884,9 @@
                 <td><span class="time-badge">11:00am</span></td>
                 <td>Lower Prom</td>
                 <td><strong>The Kicking Stone Launch Ceremony</strong><br><span class="detail">The Kicking Stone is a new sculpture at the end of Tramore Prom, inviting visitors to mark the end
-of their walk, or the beginning of their beach adventure, with a playful kick.
-The launch event will feature a performance by Freedom Dance School and free craft workshops
-where participants can create fun foot coverings for their first kick at 10.30am, 2pm and 3pm</span></td>
+                    of their walk, or the beginning of their beach adventure, with a playful kick.
+                    The launch event will feature a performance by Freedom Dance School and free craft workshops
+                    where participants can create fun foot coverings for their first kick at 10.30am, 2pm and 3pm</span></td>
                 <td><span class="cost-free">Free</span><span class="booking">Drop-in</span></td>
               </tr>
               <tr class="cat-wellness">
@@ -1925,7 +1929,7 @@ where participants can create fun foot coverings for their first kick at 10.30am
                 <td><span class="time-badge">12:30–1:00pm</span></td>
                 <td>Tramore Prom</td>
                 <td><strong>Demo &amp; Chats with Judit</strong><br><span class="detail">From Cocoa by Judit. Maybe get to sample
-some delicious chocolate</span></td>
+                    some delicious chocolate</span></td>
                 <td><span class="cost-free">Free</span><br><span class="booking">Drop-in</span></td>
               </tr>
               <tr class="cat-music">
@@ -1976,7 +1980,8 @@ some delicious chocolate</span></td>
                 <td>Garrarus Beach</td>
                 <td><strong>Mini-Forage at Garrarus Strand</strong><br><span class="detail">With Marie Power, The Sea Gardener. Introduction to edible seaweeds on the Waterford coast. Waterproof &amp; non-slip footwear required. Max 25 people</span>
                 </td>
-                <td><span class="cost-free">Free</span><br><span class="booking"><a href="https://www.eventbrite.ie/e/mini-forage-at-garrarus-strand-with-marie-power-the-sea-gardener-tickets-1990594023309?aff=oddtdtcreator&keep_tld=true" target="_blank">Book Now</a></span></td>
+                <td><span class="cost-free">Free</span><br><span class="booking"><a href="https://www.eventbrite.ie/e/mini-forage-at-garrarus-strand-with-marie-power-the-sea-gardener-tickets-1990594023309?aff=oddtdtcreator&keep_tld=true"
+                      target="_blank">Book Now</a></span></td>
               </tr>
               <tr class="cat-music">
                 <td><span class="time-badge">4:00–8:00pm</span></td>
@@ -1995,16 +2000,17 @@ some delicious chocolate</span></td>
                 <td><span class="time-badge">6:00pm &amp; 8.15pm</span></td>
                 <td>Mezze</td>
                 <td><strong>Coastal Market Night</strong><br><span class="detail">Join Mezze for an evening inspired by the buzz of Middle Eastern markets—big flavours and
-generous sharing plates.
-We’ll be serving a feast of small plates with a coastal theme. Expect fish and seafood, seasonal
-salads, dips, breads, and sweet finishes</span></td>
+                    generous sharing plates.
+                    We’ll be serving a feast of small plates with a coastal theme. Expect fish and seafood, seasonal
+                    salads, dips, breads, and sweet finishes</span></td>
                 <td><span class="cost-paid">€45</span><br><span class="booking"><a href="http://www.mezze.ie" target="_blank">Book Now</a></span></td>
               </tr>
               <tr class="cat-food">
                 <td><span class="time-badge">7:00pm</span></td>
                 <td>The Majestic Hotel</td>
                 <td><strong>Spanish Wine Tasting &amp; Food Pairings</strong><br><span class="detail">Curated Spanish wine tasting with authentic tapas. A relaxed evening of beautiful wines and Mediterranean charm</span></td>
-                <td><span class="cost-paid">€50</span><br><span class="booking"><a href="https://www.eventbrite.co.uk/e/saturday-spanish-wine-tasting-food-pairing-with-vitamin-sea-festival-tickets-1990948516608?aff=oddtdtcreator" target="_blank">Book Now</a></span></td>
+                <td><span class="cost-paid">€50</span><br><span class="booking"><a href="https://www.eventbrite.co.uk/e/saturday-spanish-wine-tasting-food-pairing-with-vitamin-sea-festival-tickets-1990948516608?aff=oddtdtcreator" target="_blank">Book
+                      Now</a></span></td>
               </tr>
             </tbody>
           </table>
@@ -2111,7 +2117,8 @@ salads, dips, breads, and sweet finishes</span></td>
               <tr class="cat-food">
                 <td><span class="time-badge">12:00–4:00pm</span></td>
                 <td>Tramore Prom</td>
-                <td><strong>Produce Markets &amp; Stalls</strong><br><span class="detail">The Petal Stand · Birdies Café · Colours by Shannon · Little Catch · I Spy Swimwear · Bella Napoli Pizza · Garden of Yeadon · Crave Cookies · Seafood Sales from Fiona Pender · Angelic Healings with Venessa Power · Tramore GAA Gaelic Football Mothers and Others</span></td>
+                <td><strong>Produce Markets &amp; Stalls</strong><br><span class="detail">The Petal Stand · Birdies Café · Colours by Shannon · Little Catch · I Spy Swimwear · Bella Napoli Pizza · Garden of Yeadon · Crave Cookies · Seafood Sales from
+                    Fiona Pender · Angelic Healings with Venessa Power · Tramore GAA Gaelic Football Mothers and Others</span></td>
                 <td><span class="cost-paygo">Pay as you go</span></td>
               </tr>
               <tr class="cat-food">
@@ -2172,9 +2179,9 @@ salads, dips, breads, and sweet finishes</span></td>
                 <td><span class="time-badge">5:00pm</span></td>
                 <td>The Pav</td>
                 <td><strong>Electro Yoga, Sauna and Pizza</strong><br><span class="detail">Participate in a unique yoga session facilitated by Karen from Tidal Soul Wellness and
-accompanied by local DJ Gav Timlin all in the new community space The Pav overlooking
-Tramore Strand. Yoga will be followed by pizza and optional sauna in the Stove Sauna adjacent
-from 6pm</span></td>
+                    accompanied by local DJ Gav Timlin all in the new community space The Pav overlooking
+                    Tramore Strand. Yoga will be followed by pizza and optional sauna in the Stove Sauna adjacent
+                    from 6pm</span></td>
                 <td><span class="cost-paid">€49</span><span class="booking"><a href="https://tidal-soul-wellness.sumupstore.com/category/events" target="_blank">Book Now</a></span></td>
               </tr>
             </tbody>
