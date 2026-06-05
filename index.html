@@ -60,6 +60,7 @@
       z-index: 1000;
       padding: 1rem 2rem;
       transition: background 0.4s ease, box-shadow 0.4s ease;
+      min-height: 90px;
     }
 
     .navbar.scrolled {
@@ -282,7 +283,7 @@
 
     .scroll-hint {
       position: absolute;
-      bottom: 2.2rem;
+      bottom: 3rem;
       left: 50%;
       transform: translateX(-50%);
       z-index: 2;
@@ -1534,7 +1535,7 @@
       <div class="collapse navbar-collapse" id="navMenu">
         <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1 mb-2 mb-lg-0">
           <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="#highlights">Programme</a></li>
+          <li class="nav-item"><a class="nav-link" href="#programme">Programme</a></li>
           <li class="nav-item"><a class="nav-link" href="#sponsors">Sponsors</a></li>
           <li class="nav-item"><a class="nav-link" href="#location">Location</a></li>
           <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
@@ -1556,7 +1557,7 @@
       <p class="hero-date">Friday–Sunday · 19–21 June 2026 · Tramore, Co. Waterford</p>
       <p class="hero-tagline">Embracing Life by the Sea</p>
       <div class="hero-cta">
-        <a href="#highlights" class="btn-hero-primary">Explore Programme</a>
+        <a href="#programme" class="btn-hero-primary">Explore Programme</a>
       </div>
     </div>
 
@@ -1656,7 +1657,7 @@
   </section>
 
   <!-- ── PROGRAMME ── -->
-  <section class="programme-section" id="highlights">
+  <section class="programme-section" id="programme">
     <div class="container wide">
       <div class="text-center mb-5">
         <p class="section-label">What's On</p>
@@ -2506,7 +2507,7 @@
           <p class="footer-heading">Festival</p>
           <ul class="footer-links">
             <li><a href="#about">About</a></li>
-            <li><a href="#highlights">Programme</a></li>
+            <li><a href="#programme">Programme</a></li>
             <li><a href="#location">Location</a></li>
           </ul>
         </div>
@@ -2564,7 +2565,6 @@
       });
     });
 
-    // ── Countdown to 19 September 2026 10:00am Irish time
     function updateCountdown() {
       const target = new Date('2026-06-19T07:00:00+01:00').getTime();
       const now = Date.now();
