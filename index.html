@@ -113,14 +113,14 @@
       font-weight: 600;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      padding: 0.5rem 1.3rem!important;
+      padding: 0.5rem 1.3rem !important;
       transition: background 0.2s, transform 0.15s;
       display: inline-block;
     }
 
     .btn-solid:hover {
       background: var(--sunset-coral);
-      color: var(--white)!important;
+      color: var(--white) !important;
       transform: translateY(-1px);
     }
 
@@ -438,9 +438,9 @@
 
     .about-img-wrap {
       position: relative;
-      border-radius: 3px;
+      border-radius: 5px;
       overflow: hidden;
-      box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+      box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
     }
 
     .about-img-wrap img {
@@ -968,8 +968,13 @@
         top: 89px;
       }
 
-      .about-section, .programme-section, .location-section, .contact-section, .sponsors-section, .taste-tramore-section {
-         scroll-margin-top:-40px;
+      .about-section,
+      .programme-section,
+      .location-section,
+      .contact-section,
+      .sponsors-section,
+      .taste-tramore-section {
+        scroll-margin-top: -40px;
       }
     }
 
@@ -1616,9 +1621,11 @@
   <section class="about-section" id="about">
     <div class="container">
       <div class="row align-items-center g-5">
-        <div class="d-none d-lg-block col-lg-5">
-          <div class="about-img-wrap" style="height:420px;">
-            <img src="images/beach-scene.jpg" alt="Tramore beach" />
+        <div class="align-items-center justify-content-center d-none d-lg-flex col-lg-5">
+          <div class="about-img-wrap" style="height:620px; width:400px;">
+            <video autoplay loop muted height="620px" style="object-fit:cover; width:100%">
+              <source src="videos/vitamin-sea-short-highlights.mp4" loading="lazy" type="video/mp4" />
+            </video>
           </div>
         </div>
         <div class="col-lg-6 offset-lg-1">
@@ -1995,8 +2002,7 @@
                 <td>The Vic</td>
                 <td><strong>Coffee, Cocktails & Conversation</strong><br><span class="detail">Women in Coffee</span>
                 </td>
-                <td><span class="cost-free">Free</span><br><span class="booking"><a href=""
-                      target="_blank">Book Now</a></span></td>
+                <td><span class="cost-free">Free</span><br><span class="booking"><a href="" target="_blank">Book Now</a></span></td>
               </tr>
               <tr class="cat-music">
                 <td><span class="time-badge">4:00–8:00pm</span></td>
@@ -2310,7 +2316,8 @@
               style="max-width:140px; max-height:60px;" /></a>
           <a href="https://www.instagram.com/gracerussell_coaching/" target="_blank" rel="noopener" class="sponsor-logo-cell"><img src="sponsors/grace-russell-logo.jpg" alt="Grace Russell Coaching" loading="lazy" /></a>
           <a href="https://www.graforfitness.ie/" target="_blank" rel="noopener" class="sponsor-logo-cell"><img src="sponsors/gra-logo.jpg" alt="Gra for Fitness" loading="lazy" style="max-width:140px; max-height:60px;" /></a>
-          <a href="https://www.facebook.com/people/Surf-Sup-Tramore/100093517925361/#" target="_blank" rel="noopener" class="sponsor-logo-cell"><img src="sponsors/surf-sup-logo.jpg" alt="Surf Sup" loading="lazy" style="max-width:140px; max-height:60px;" /></a>
+          <a href="https://www.facebook.com/people/Surf-Sup-Tramore/100093517925361/#" target="_blank" rel="noopener" class="sponsor-logo-cell"><img src="sponsors/surf-sup-logo.jpg" alt="Surf Sup" loading="lazy"
+              style="max-width:140px; max-height:60px;" /></a>
           <a href="https://www.instagram.com/seabrewcoffeevan/" target="_blank" rel="noopener" class="sponsor-logo-cell"><img src="sponsors/sea-brew-logo.jpg" alt="Sea Brew Coffee" loading="lazy" /></a>
           <a href="https://www.facebook.com/p/Tomatti-100063697892613/" target="_blank" rel="noopener" class="sponsor-logo-cell"><img src="sponsors/tomatti-logo.jpg" alt="Tomatti" loading="lazy" style="max-width:140px; max-height:60px;" /></a>
           <a href="https://www.facebook.com/theritztramore/" target="_blank" rel="noopener" class="sponsor-logo-cell"><img src="sponsors/ritz-logo.jpg" alt="The Ritz" loading="lazy" style="max-width:140px; max-height:60px;" /></a>
