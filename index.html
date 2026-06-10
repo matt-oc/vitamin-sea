@@ -935,7 +935,7 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 1rem;
+      gap: 0.55rem;
     }
 
     .sponsor-logo-cell {
@@ -948,7 +948,7 @@
       transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
       overflow: hidden;
       text-decoration: none;
-      min-height: 100px;
+      min-height: 80px;
     }
 
     .sponsor-logo-cell:hover {
@@ -963,36 +963,37 @@
     }
 
     .sponsor-grid-md .sponsor-logo-cell {
-      width: calc(20% - 0.75rem);
-      min-width: 160px;
-      padding: 1.5rem 1.8rem;
+      width: calc(20% - 0.55rem);
+      min-width: 130px;
+      padding: 1.1rem 1.3rem;
     }
 
     .sponsor-grid-md .sponsor-logo-cell img {
-      max-height: 70px;
-      max-width: 160px;
+      max-height: 56px;
+      max-width: 130px;
       width: 100%;
     }
 
     .sponsor-grid-sm .sponsor-logo-cell {
-      width: calc(15% - 0.8rem);
-      min-width: 130px;
-      padding: 1.1rem 1.2rem;
+      width: calc(13% - 0.5rem);
+      min-width: 108px;
+      padding: 0.75rem 0.9rem;
     }
 
     .sponsor-grid-sm .sponsor-logo-cell img {
-      max-height: 52px;
-      max-width: 120px;
+      max-height: 44px;
+      max-width: 100px;
       width: 100%;
     }
 
     @media (max-width: 991px) {
       .sponsor-grid-md .sponsor-logo-cell {
-        width: calc(32% - 0.5rem);
+        width: calc(32% - 0.4rem);
       }
 
       .sponsor-grid-sm .sponsor-logo-cell {
-        width: calc(23% - 0.2rem);
+        width: calc(21% - 0.4rem);
+        min-width: 90px;
       }
 
       .navbar {
@@ -1247,6 +1248,116 @@
       background: var(--foam);
       padding: 5rem 0;
     }
+
+    /* SVG illustration container */
+    .tt-illustration {
+      margin: 0 auto 0;
+      max-width: 560px;
+      width: 100%;
+    }
+
+    /* Coastal background waves */
+    @keyframes tt-wave1 {
+      0%, 100% { transform: translateX(0); }
+      50%       { transform: translateX(-12px); }
+    }
+    @keyframes tt-wave2 {
+      0%, 100% { transform: translateX(0); }
+      50%       { transform: translateX(10px); }
+    }
+    .tt-wave-front { animation: tt-wave1 4s ease-in-out infinite; }
+    .tt-wave-back  { animation: tt-wave2 5.5s ease-in-out infinite; }
+
+    /* Seagull soar */
+    @keyframes tt-gull1 {
+      0%   { transform: translate(0,0); }
+      50%  { transform: translate(60px,-8px); }
+      100% { transform: translate(0,0); }
+    }
+    @keyframes tt-gull2 {
+      0%   { transform: translate(0,0); }
+      50%  { transform: translate(-50px,-6px); }
+      100% { transform: translate(0,0); }
+    }
+    .tt-gull1 { animation: tt-gull1 10s ease-in-out infinite; }
+    .tt-gull2 { animation: tt-gull2 13s ease-in-out 2s infinite; }
+
+    /* Wing flap — d attribute morphing through natural arc positions */
+    /* Gull 1 wings (centre point 310,22)
+       Sequence: glide → tips drop slowly → push down → recover up → glide pause */
+    @keyframes tt-flap1 {
+      0%   { d: path("M300,22 Q305,19 310,22 Q315,19 320,22"); } /* neutral glide */
+      12%  { d: path("M300,21 Q305,17 310,21 Q315,17 320,21"); } /* beginning downstroke */
+      28%  { d: path("M300,24 Q305,16 310,20 Q315,16 320,24"); } /* full downstroke */
+      48%  { d: path("M300,20 Q305,23 310,21 Q315,23 320,20"); } /* upstroke recovery */
+      62%  { d: path("M300,21 Q305,18 310,21 Q315,18 320,21"); } /* settling back */
+      100% { d: path("M300,22 Q305,19 310,22 Q315,19 320,22"); } /* long glide hold */
+    }
+    .tt-gull1-wings { animation: tt-flap1 2.2s cubic-bezier(0.4,0,0.6,1) infinite; }
+
+    /* Gull 2 wings (centre point 140,35) — lazier, slightly offset */
+    @keyframes tt-flap2 {
+      0%   { d: path("M130,35 Q135,32 140,35 Q145,32 150,35"); }
+      10%  { d: path("M130,34 Q135,30 140,34 Q145,30 150,34"); }
+      25%  { d: path("M130,37 Q135,29 140,33 Q145,29 150,37"); }
+      45%  { d: path("M130,33 Q135,36 140,34 Q145,36 150,33"); }
+      60%  { d: path("M130,34 Q135,31 140,34 Q145,31 150,34"); }
+      100% { d: path("M130,35 Q135,32 140,35 Q145,32 150,35"); }
+    }
+    .tt-gull2-wings { animation: tt-flap2 2.8s cubic-bezier(0.4,0,0.6,1) 0.6s infinite; }
+
+    /* Gull 3 wings (centre 398,14) — distant, very slow lazy glide */
+    @keyframes tt-flap3 {
+      0%   { d: path("M390,14 Q394,12 398,14 Q402,12 406,14"); }
+      20%  { d: path("M390,15 Q394,10 398,13 Q402,10 406,15"); }
+      42%  { d: path("M390,12 Q394,15 398,13 Q402,15 406,12"); }
+      65%  { d: path("M390,14 Q394,11 398,13 Q402,11 406,14"); }
+      100% { d: path("M390,14 Q394,12 398,14 Q402,12 406,14"); }
+    }
+    .tt-gull3-wings { animation: tt-flap3 3.5s cubic-bezier(0.4,0,0.6,1) 1.2s infinite; }
+
+    /* Steam wisps */
+    @keyframes tt-steam {
+      0%   { opacity: 0; transform: translateY(0); }
+      25%  { opacity: 0.55; }
+      100% { opacity: 0; transform: translateY(-18px); }
+    }
+    .tt-steam1 { animation: tt-steam 2.4s ease-out infinite; }
+    .tt-steam2 { animation: tt-steam 2.4s ease-out 0.8s infinite; }
+    .tt-steam3 { animation: tt-steam 2.4s ease-out 1.6s infinite; }
+
+    /* Wine glass gentle sway */
+    @keyframes tt-sway {
+      0%, 100% { transform: rotate(0deg); }
+      50%       { transform: rotate(2deg); }
+    }
+    .tt-wine-glass { animation: tt-sway 5s ease-in-out infinite; transform-origin: 120px 120px; }
+
+    /* Fish wiggle */
+    @keyframes tt-wiggle {
+      0%, 100% { transform: translateX(0); }
+      50%       { transform: translateX(3px); }
+    }
+    .tt-fish { animation: tt-wiggle 4s ease-in-out 1s infinite; }
+
+    /* Bowl shimmer (subtle scale) */
+    @keyframes tt-shimmer {
+      0%, 100% { transform: scaleX(1); }
+      50%       { transform: scaleX(1.04); }
+    }
+    .tt-bowl { animation: tt-shimmer 3.5s ease-in-out infinite; transform-origin: 360px 118px; }
+
+    /* Scroll-in for utensils */
+    @keyframes tt-utensil-in {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .tt-utensil2 { opacity: 0; }
+    .tt-utensil2.visible { animation: tt-utensil-in 0.7s ease forwards; }
+    .tt-coffee   { opacity: 0; }
+    .tt-coffee.visible   { animation: tt-utensil-in 0.7s ease 0.15s forwards; }
+    .tt-cheese   { opacity: 0; }
+    .tt-cheese.visible   { animation: tt-utensil-in 0.7s ease 0.3s forwards; }
 
     .taste-tramore-section .section-title {
       margin-bottom: 0.5rem;
@@ -2415,6 +2526,7 @@
           <p class="section-label">About Taste Tramore</p>
           <h2 class="section-title">Taste Tramore</h2>
           <div class="taste-tramore-divider"></div>
+
           <div class="taste-tramore-body">
             <p>Taste Tramore is a voluntary, committee-led collective of local food and drink businesses, established in 2019 to champion Tramore, Co. Waterford as a leading culinary destination. Now in its seventh year, Taste Tramore has grown into
               a vibrant and collaborative network, driven by a passionate board drawn from the local hospitality and business community.</p>
@@ -2424,6 +2536,296 @@
             <p>A highlight of the calendar is the Vitamin Sea Festival—a unique celebration of food, culture, and community that showcases the people and produce that make Tramore special.</p>
             <p>Through collaboration, events, and shared vision, Taste Tramore continues to support local businesses and invite visitors to experience the authentic flavours of the coast.</p>
           </div>
+
+          <!-- Animated food illustration -->
+          <div class="tt-illustration" aria-hidden="true" style="margin-top:2.5rem;margin-bottom:0;">
+            <svg viewBox="0 0 560 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;">
+              <defs>
+                <linearGradient id="tt-table" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#c8b89a"/>
+                  <stop offset="100%" stop-color="#a8956e"/>
+                </linearGradient>
+                <linearGradient id="tt-cloth" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#f4f0eb"/>
+                  <stop offset="100%" stop-color="#e8e0d5"/>
+                </linearGradient>
+                <linearGradient id="tt-wine" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#7a2535"/>
+                  <stop offset="100%" stop-color="#4a1020"/>
+                </linearGradient>
+                <linearGradient id="tt-soup" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#e8934a"/>
+                  <stop offset="100%" stop-color="#c85d3a"/>
+                </linearGradient>
+                <linearGradient id="tt-rock" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#3d5040"/>
+                  <stop offset="100%" stop-color="#1e2a20"/>
+                </linearGradient>
+              </defs>
+
+              <!-- ── COASTAL BACKGROUND ── -->
+              <!-- Sky gradient -->
+              <rect width="560" height="112" fill="url(#tt-sky)" rx="8"/>
+
+              <!-- Sun (moved inward to avoid overlap with right headland) -->
+              <circle cx="440" cy="28" r="18" fill="#e8934a" opacity="0.18"/>
+              <circle cx="440" cy="28" r="11" fill="#e8934a" opacity="0.88"/>
+              <g stroke="#e8934a" stroke-width="1.2" stroke-linecap="round" opacity="0.5">
+                <line x1="440" y1="13" x2="440" y2="8"/>
+                <line x1="440" y1="43" x2="440" y2="48"/>
+                <line x1="425" y1="28" x2="420" y2="28"/>
+                <line x1="455" y1="28" x2="460" y2="28"/>
+                <line x1="429" y1="17" x2="426" y2="14"/>
+                <line x1="451" y1="39" x2="454" y2="42"/>
+                <line x1="451" y1="17" x2="454" y2="14"/>
+                <line x1="429" y1="39" x2="426" y2="42"/>
+              </g>
+
+              <!-- ── LEFT HEADLAND with Metal Man pillars ── -->
+              <!-- Rocky mass -->
+              <path d="M0,112 L0,74 Q8,68 18,72 Q28,60 42,65 Q54,58 62,68 Q70,62 75,72 Q80,78 78,88 Q72,92 60,90 Q50,94 38,92 Q22,96 10,94 L0,96 Z" fill="#2a3a2e"/>
+              <!-- Rock texture / darker crevices -->
+              <path d="M18,72 Q22,78 20,86" fill="none" stroke="#1a2a1e" stroke-width="1" opacity="0.5"/>
+              <path d="M42,65 Q46,74 44,84" fill="none" stroke="#1a2a1e" stroke-width="1" opacity="0.5"/>
+              <path d="M62,68 Q64,76 62,86" fill="none" stroke="#1a2a1e" stroke-width="1" opacity="0.4"/>
+              <!-- Lighter top ridge highlights -->
+              <path d="M0,74 Q8,68 18,72 Q28,60 42,65 Q54,58 62,68 Q70,62 75,72" fill="none" stroke="#3d5040" stroke-width="1.2" opacity="0.7"/>
+
+              <!-- Left pillar 1 (tallest, leftmost) -->
+              <rect x="8"  y="44" width="6" height="30" rx="1" fill="#84878a"/>
+              <rect x="8"  y="44" width="6" height="4"  rx="1" fill="#4a4038"/>
+              <ellipse cx="11" cy="44" rx="3.5" ry="2" fill="#4a4038"/>
+              <!-- Pillar 1 details -->
+
+              <!-- Left pillar 2 (medium) -->
+              <rect x="24" y="50" width="6" height="26" rx="1" fill="#84878a"/>
+              <rect x="24" y="50" width="6" height="4"  rx="1" fill="#4a4038"/>
+              <ellipse cx="27" cy="50" rx="3.5" ry="2" fill="#4a4038"/>
+
+              <!-- Left pillar 3 (shortest) -->
+              <rect x="40" y="54" width="5" height="22" rx="1" fill="#84878a"/>
+              <rect x="40" y="54" width="5" height="3"  rx="1" fill="#4a4038"/>
+              <ellipse cx="42.5" cy="54" rx="3" ry="1.8" fill="#4a4038"/>
+
+              <!-- ── RIGHT HEADLAND with Metal Man pillars ── -->
+              <!-- Rocky mass -->
+              <path d="M560,112 L560,74 Q552,68 542,72 Q532,60 518,65 Q506,58 498,68 Q490,62 485,72 Q480,78 482,88 Q488,92 500,90 Q510,94 522,92 Q538,96 550,94 L560,96 Z" fill="#2a3a2e"/>
+              <!-- Rock texture -->
+              <path d="M542,72 Q538,78 540,86" fill="none" stroke="#1a2a1e" stroke-width="1" opacity="0.5"/>
+              <path d="M518,65 Q514,74 516,84" fill="none" stroke="#1a2a1e" stroke-width="1" opacity="0.5"/>
+              <path d="M498,68 Q496,76 498,86" fill="none" stroke="#1a2a1e" stroke-width="1" opacity="0.4"/>
+              <!-- Lighter top ridge -->
+              <path d="M560,74 Q552,68 542,72 Q532,60 518,65 Q506,58 498,68 Q490,62 485,72" fill="none" stroke="#3d5040" stroke-width="1.2" opacity="0.7"/>
+
+              <!-- Right pillar 1 (tallest, rightmost) -->
+              <rect x="546" y="44" width="6" height="30" rx="1" fill="#84878a"/>
+              <rect x="546" y="44" width="6" height="4"  rx="1" fill="#4a4038"/>
+              <ellipse cx="549" cy="44" rx="3.5" ry="2" fill="#4a4038"/>
+
+              <!-- Right pillar 2 (medium) -->
+              <rect x="530" y="50" width="6" height="26" rx="1" fill="#84878a"/>
+              <rect x="530" y="50" width="6" height="4"  rx="1" fill="#4a4038"/>
+              <ellipse cx="533" cy="50" rx="3.5" ry="2" fill="#4a4038"/>
+
+              <!-- Right pillar 3 (shortest) -->
+              <rect x="515" y="54" width="5" height="22" rx="1" fill="#84878a"/>
+              <rect x="515" y="54" width="5" height="3"  rx="1" fill="#4a4038"/>
+              <ellipse cx="517.5" cy="54" rx="3" ry="1.8" fill="#4a4038"/>
+
+              <!-- Sea / horizon strip -->
+              <rect x="0" y="88" width="560" height="24" fill="#1a4060" opacity="0.3"/>
+
+              <!-- Back wave (animated) -->
+              <path class="tt-wave-back"
+                d="M0,96 Q70,88 140,96 Q210,104 280,96 Q350,88 420,96 Q490,104 560,96 L560,112 L0,112 Z"
+                fill="#1a4060" opacity="0.45"/>
+
+              <!-- Front wave (animated) -->
+              <path class="tt-wave-front"
+                d="M0,100 Q70,92 140,100 Q210,108 280,100 Q350,92 420,100 Q490,108 560,100 L560,112 L0,112 Z"
+                fill="#0d2233" opacity="0.6"/>
+
+              <!-- Seafoam flecks -->
+              <g fill="white" opacity="0.35">
+                <ellipse cx="60"  cy="101" rx="9"  ry="1.5"/>
+                <ellipse cx="200" cy="108" rx="7"  ry="1.2"/>
+                <ellipse cx="320" cy="101" rx="10" ry="1.5"/>
+                <ellipse cx="460" cy="107" rx="8"  ry="1.2"/>
+              </g>
+
+              <!-- Seagull 1 (animated flight + flapping wings) -->
+              <g class="tt-gull1">
+                <path class="tt-gull1-wings" d="M300,22 Q305,18 310,22 Q315,18 320,22" stroke="#0d2233" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              </g>
+              <!-- Seagull 2 (animated flight + flapping wings) -->
+              <g class="tt-gull2">
+                <path class="tt-gull2-wings" d="M130,35 Q135,31 140,35 Q145,31 150,35" stroke="#0d2233" stroke-width="1.3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              </g>
+              <!-- Seagull 3 (static small, gentle flap) -->
+              <g opacity="0.4">
+                <path class="tt-gull3-wings" d="M390,14 Q394,11 398,14 Q402,11 406,14" stroke="#0d2233" stroke-width="1.1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              </g>
+
+              <!-- Small fishing boat on horizon -->
+              <g opacity="0.6">
+                <path d="M200,89 L222,89 L219,94 L203,94 Z" fill="#f4f0eb" stroke="#c8b89a" stroke-width="0.7"/>
+                <rect x="210" y="83" width="1.5" height="7" fill="#c8b89a"/>
+                <path d="M211.5,83 L221,87 L211.5,89 Z" fill="#e8934a" opacity="0.7"/>
+              </g>
+
+              <!-- Small dots / crumbs scattered -->
+              <circle cx="120" cy="145" r="2.5" fill="#c8b89a" opacity="0.6"/>
+              <circle cx="145" cy="150" r="1.8" fill="#c8b89a" opacity="0.5"/>
+              <circle cx="415" cy="148" r="2" fill="#c8b89a" opacity="0.5"/>
+              <circle cx="440" cy="143" r="2.5" fill="#c8b89a" opacity="0.6"/>
+
+              <!-- ── TABLE SURFACE ── -->
+              <rect x="0" y="118" width="560" height="42" fill="url(#tt-table)" rx="4"/>
+              <!-- Tablecloth top edge -->
+              <rect x="0" y="112" width="560" height="14" fill="url(#tt-cloth)" rx="3"/>
+              <!-- Tablecloth scallop edge -->
+              <path d="M0,126 Q14,122 28,126 Q42,130 56,126 Q70,122 84,126 Q98,130 112,126 Q126,122 140,126 Q154,130 168,126 Q182,122 196,126 Q210,130 224,126 Q238,122 252,126 Q266,130 280,126 Q294,122 308,126 Q322,130 336,126 Q350,122 364,126 Q378,130 392,126 Q406,122 420,126 Q434,130 448,126 Q462,122 476,126 Q490,130 504,126 Q518,122 532,126 Q546,130 560,126" stroke="#d4c8b4" stroke-width="1" fill="none"/>
+
+              <!-- ── WINE GLASS (left) ── -->
+              <g class="tt-wine-glass">
+                <!-- Glass bowl -->
+                <path d="M118,70 Q108,90 112,108 L128,108 Q132,90 122,70 Z" fill="#c9e8f5" opacity="0.35" stroke="#aac8dc" stroke-width="0.8"/>
+                <!-- Wine fill -->
+                <path d="M119,88 Q112,98 113,108 L127,108 Q128,98 121,88 Z" fill="url(#tt-wine)" opacity="0.75"/>
+                <!-- Stem -->
+                <line x1="120" y1="108" x2="120" y2="120" stroke="#aac8dc" stroke-width="1.5"/>
+                <!-- Base -->
+                <ellipse cx="120" cy="120" rx="8" ry="2.5" fill="#aac8dc" opacity="0.6"/>
+                <!-- Shine -->
+                <path d="M113,78 Q112,85 114,90" stroke="white" stroke-width="1" fill="none" opacity="0.5" stroke-linecap="round"/>
+              </g>
+
+              <!-- ── OYSTER SHELL ── -->
+              <g class="tt-oyster">
+                <!-- Shell base -->
+                <path d="M162,112 Q175,95 198,106 Q195,118 162,118 Z" fill="#c8b89a" stroke="#a09070" stroke-width="0.8"/>
+                <!-- Shell top -->
+                <path d="M162,112 Q175,96 198,106" fill="none" stroke="#8a7858" stroke-width="1"/>
+                <!-- Ridges -->
+                <path d="M168,111 Q178,99 192,106" fill="none" stroke="#a09070" stroke-width="0.6" opacity="0.7"/>
+                <path d="M173,111 Q181,101 188,106" fill="none" stroke="#a09070" stroke-width="0.6" opacity="0.5"/>
+                <!-- Pearl / meat inside -->
+                <ellipse cx="180" cy="112" rx="10" ry="4" fill="#f0ece6" opacity="0.8"/>
+                <ellipse cx="180" cy="111" rx="6" ry="2.5" fill="#e8ddd0" opacity="0.9"/>
+                <!-- Lemon squeeze drop -->
+                <circle cx="196" cy="108" r="3" fill="#f5d76e" opacity="0.85"/>
+                <path d="M196,105 L196,101 M193,107 L190,104 M199,107 L202,104" stroke="#f5d76e" stroke-width="0.8" stroke-linecap="round" opacity="0.7"/>
+              </g>
+
+              <!-- ── BREAD LOAF ── -->
+              <g class="tt-bread">
+                <!-- Loaf body -->
+                <path d="M228,108 Q232,94 256,92 Q280,90 286,104 Q288,112 284,116 L230,116 Z" fill="#d4935a"/>
+                <!-- Crust top -->
+                <path d="M228,108 Q232,94 256,92 Q280,90 286,104" fill="none" stroke="#b8733a" stroke-width="1.5"/>
+                <!-- Score marks -->
+                <line x1="248" y1="93" x2="245" y2="114" stroke="#a86030" stroke-width="1" stroke-linecap="round" opacity="0.6"/>
+                <line x1="260" y1="92" x2="257" y2="114" stroke="#a86030" stroke-width="1" stroke-linecap="round" opacity="0.6"/>
+                <line x1="272" y1="94" x2="270" y2="114" stroke="#a86030" stroke-width="1" stroke-linecap="round" opacity="0.6"/>
+                <!-- Sesame seeds -->
+                <ellipse cx="253" cy="96" rx="2" ry="1" fill="#e8c888" transform="rotate(-30,253,96)" opacity="0.8"/>
+                <ellipse cx="263" cy="93" rx="2" ry="1" fill="#e8c888" transform="rotate(10,263,93)" opacity="0.8"/>
+                <ellipse cx="273" cy="96" rx="2" ry="1" fill="#e8c888" transform="rotate(-15,273,96)" opacity="0.8"/>
+                <!-- Steam puff 1 -->
+                <path class="tt-steam1" d="M248,92 Q245,86 248,80 Q251,74 248,68" fill="none" stroke="#ccc" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+                <!-- Steam puff 2 -->
+                <path class="tt-steam2" d="M263,90 Q260,84 263,78 Q266,72 263,66" fill="none" stroke="#ccc" stroke-width="1.5" stroke-linecap="round" opacity="0.45"/>
+              </g>
+
+              <!-- ── SOUP BOWL ── -->
+              <g class="tt-bowl">
+                <!-- Plate -->
+                <ellipse cx="360" cy="118" rx="36" ry="5" fill="#e8e0d5" stroke="#d4c8b4" stroke-width="0.8"/>
+                <!-- Bowl -->
+                <path d="M330,102 Q330,118 360,118 Q390,118 390,102 Z" fill="white" stroke="#d4c8b4" stroke-width="0.8"/>
+                <!-- Soup fill -->
+                <path d="M332,106 Q332,116 360,116 Q388,116 388,106 Z" fill="url(#tt-soup)" opacity="0.85"/>
+                <!-- Soup surface shimmer -->
+                <ellipse cx="360" cy="107" rx="24" ry="3" fill="#e8934a" opacity="0.4"/>
+                <!-- Garnish (herb) on soup -->
+                <ellipse cx="360" cy="107" rx="4" ry="2" fill="#6dbf85" opacity="0.9"/>
+                <!-- Steam from soup -->
+                <path class="tt-steam1" d="M350,102 Q347,95 350,88 Q353,81 350,74" fill="none" stroke="#ccc" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+                <path class="tt-steam3" d="M360,100 Q357,93 360,86 Q363,79 360,72" fill="none" stroke="#ccc" stroke-width="1.5" stroke-linecap="round" opacity="0.45"/>
+                <path class="tt-steam2" d="M370,102 Q367,95 370,88 Q373,81 370,74" fill="none" stroke="#ccc" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+                <!-- Bowl rim highlight -->
+                <path d="M332,102 Q360,96 388,102" fill="none" stroke="white" stroke-width="1" opacity="0.5"/>
+              </g>
+
+              <!-- ── FISH (whole, on board) ── -->
+              <g class="tt-fish">
+                <!-- Wooden board -->
+                <rect x="410" y="104" width="68" height="18" rx="3" fill="#c8a870" stroke="#a88850" stroke-width="0.8"/>
+                <line x1="420" y1="104" x2="420" y2="122" stroke="#a88850" stroke-width="0.5" opacity="0.5"/>
+                <line x1="436" y1="104" x2="436" y2="122" stroke="#a88850" stroke-width="0.5" opacity="0.5"/>
+                <line x1="452" y1="104" x2="452" y2="122" stroke="#a88850" stroke-width="0.5" opacity="0.5"/>
+                <line x1="468" y1="104" x2="468" y2="122" stroke="#a88850" stroke-width="0.5" opacity="0.5"/>
+                <!-- Fish body -->
+                <path d="M416,113 Q430,100 462,110 Q430,122 416,113 Z" fill="#5a8aaa"/>
+                <!-- Fish tail -->
+                <path d="M416,113 L406,107 L406,119 Z" fill="#4a7a9a"/>
+                <!-- Fish eye -->
+                <circle cx="456" cy="110" r="2.5" fill="white"/>
+                <circle cx="456" cy="110" r="1.2" fill="#1a2a3a"/>
+                <!-- Fish scales -->
+                <path d="M430,105 Q433,108 430,111" fill="none" stroke="#4a7a9a" stroke-width="0.8" opacity="0.6"/>
+                <path d="M440,104 Q443,107 440,110" fill="none" stroke="#4a7a9a" stroke-width="0.8" opacity="0.6"/>
+                <path d="M450,105 Q453,108 450,111" fill="none" stroke="#4a7a9a" stroke-width="0.8" opacity="0.6"/>
+                <!-- Lemon slice on fish -->
+                <circle cx="438" cy="113" r="5" fill="#f5d76e" opacity="0.9" stroke="#e8c840" stroke-width="0.5"/>
+                <line x1="438" y1="108" x2="438" y2="118" stroke="#e8c840" stroke-width="0.5" opacity="0.6"/>
+                <line x1="433" y1="113" x2="443" y2="113" stroke="#e8c840" stroke-width="0.5" opacity="0.6"/>
+              </g>
+
+              <!-- ── CHEESE WEDGE ── -->
+              <g class="tt-cheese">
+                <polygon points="490,116 520,116 508,94" fill="#f5c842" stroke="#e8b830" stroke-width="0.8"/>
+                <!-- Holes -->
+                <circle cx="507" cy="108" r="2.5" fill="#e8b020" opacity="0.7"/>
+                <circle cx="500" cy="112" r="2" fill="#e8b020" opacity="0.6"/>
+                <circle cx="513" cy="113" r="1.5" fill="#e8b020" opacity="0.5"/>
+                <!-- Rind -->
+                <line x1="490" y1="116" x2="520" y2="116" stroke="#d4a020" stroke-width="2" stroke-linecap="round"/>
+              </g>
+
+              <!-- ── FORK & KNIFE (right side) ── -->
+              <g class="tt-utensil2">
+                <!-- Knife -->
+                <rect x="544" y="72" width="3" height="44" rx="1.5" fill="#c0b8b0"/>
+                <path d="M544,72 Q545,65 547,72 Z" fill="#a0988e"/>
+                <!-- Fork -->
+                <rect x="551" y="80" width="3" height="36" rx="1.5" fill="#c0b8b0"/>
+                <line x1="549" y1="80" x2="549" y2="68" stroke="#c0b8b0" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="552" y1="80" x2="552" y2="68" stroke="#c0b8b0" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="555" y1="80" x2="555" y2="68" stroke="#c0b8b0" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M549,80 Q552,84 555,80" fill="none" stroke="#c0b8b0" stroke-width="1.5"/>
+              </g>
+
+              <!-- ── COFFEE CUP ── -->
+              <g class="tt-coffee">
+                <!-- Saucer -->
+                <ellipse cx="76" cy="120" rx="18" ry="4" fill="#e8e0d5" stroke="#d4c8b4" stroke-width="0.7"/>
+                <!-- Cup body -->
+                <path d="M60,104 Q60,118 76,118 Q92,118 92,104 Z" fill="white" stroke="#d4c8b4" stroke-width="0.8"/>
+                <!-- Coffee fill -->
+                <ellipse cx="76" cy="105" rx="14" ry="3.5" fill="#6b3d2e"/>
+                <!-- Foam pattern -->
+                <path d="M68,105 Q72,102 76,105 Q80,108 84,105" fill="none" stroke="#c8a880" stroke-width="1" opacity="0.7"/>
+                <!-- Handle -->
+                <path d="M92,106 Q100,106 100,112 Q100,118 92,118" fill="none" stroke="#d4c8b4" stroke-width="2.5"/>
+                <!-- Steam from coffee -->
+                <path class="tt-steam2" d="M70,104 Q67,98 70,92 Q73,86 70,80" fill="none" stroke="#ccc" stroke-width="1.4" stroke-linecap="round" opacity="0.45"/>
+                <path class="tt-steam3" d="M80,104 Q77,98 80,92 Q83,86 80,80" fill="none" stroke="#ccc" stroke-width="1.4" stroke-linecap="round" opacity="0.4"/>
+              </g>
+
+            </svg>
+          </div>
+
         </div>
       </div>
     </div>
@@ -2632,6 +3034,19 @@
       }
     });
 
+
+    // ── Taste Tramore food illustration scroll-in
+    (function() {
+      const els = document.querySelectorAll('.tt-utensil2, .tt-coffee, .tt-cheese');
+      if ('IntersectionObserver' in window) {
+        const obs = new IntersectionObserver((entries) => {
+          entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+        }, { threshold: 0.3 });
+        els.forEach(el => obs.observe(el));
+      } else {
+        els.forEach(el => el.classList.add('visible'));
+      }
+    })();
 
     // ── Programme day tabs
     document.querySelectorAll('.prog-tab').forEach(tab => {
