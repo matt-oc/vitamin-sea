@@ -33,16 +33,46 @@
     /* ── PAGE FADE-IN OVERLAY ───────────────────────────── */
     #page-cover {
       position: fixed;
-      inset: 0;
+      top: 0; left: 0; right: 0; bottom: 0;
+      width: 100vw;
+      height: 100vh;
       background: #ffffff;
       z-index: 99999;
-      pointer-events: none;
       opacity: 1;
-      transition: opacity 0.6s ease;
+      transition: opacity 0.65s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 1.1rem;
     }
 
     #page-cover.fade-out {
       opacity: 0;
+      pointer-events: none;
+    }
+
+    #page-cover .spinner-ring {
+      width: 46px;
+      height: 46px;
+      border: 3.5px solid #e8e4df;
+      border-top-color: #e8934a;
+      border-radius: 50%;
+      animation: spinner-turn 0.8s linear infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes spinner-turn {
+      to { transform: rotate(360deg); }
+    }
+
+    #page-cover .spinner-label {
+      font-family: sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #a09a93;
     }
 
     * {
@@ -1702,7 +1732,10 @@
 <body>
 
   <!-- Page fade-in cover -->
-  <div id="page-cover"></div>
+  <div id="page-cover">
+    <div class="spinner-ring"></div>
+    <span class="spinner-label">Loading</span>
+  </div>
 
   <!-- ── NAVBAR ── -->
   <nav class="navbar navbar-expand-lg" id="mainNav">
@@ -3111,14 +3144,20 @@
       });
     });
   </script>  <script>
+    // Lock scroll while the cover is visible
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
+
     // Fade in from white once all resources are loaded
     window.addEventListener('load', function () {
       var cover = document.getElementById('page-cover');
-      // Small rAF delay ensures the browser has painted before we start the fade
       requestAnimationFrame(function () {
         requestAnimationFrame(function () {
           cover.classList.add('fade-out');
           cover.addEventListener('transitionend', function () {
+            // Restore scroll then remove the cover
+            document.documentElement.style.overflow = '';
+            document.body.style.overflow = '';
             cover.remove();
           }, { once: true });
         });
