@@ -82,6 +82,7 @@
     html {
       scroll-behavior: smooth;
       scroll-padding-top: 90px;
+      overflow-y: scroll; /* always reserve scrollbar gutter — prevents layout shift on loader fade */
       /* offset for fixed navbar */
     }
 
@@ -3145,7 +3146,6 @@
     });
   </script>  <script>
     // Lock scroll while the cover is visible
-    document.documentElement.style.overflow = 'hidden';
     document.body.style.overflow = 'hidden';
 
     // Fade in from white once all resources are loaded
@@ -3155,8 +3155,6 @@
         requestAnimationFrame(function () {
           cover.classList.add('fade-out');
           cover.addEventListener('transitionend', function () {
-            // Restore scroll then remove the cover
-            document.documentElement.style.overflow = '';
             document.body.style.overflow = '';
             cover.remove();
           }, { once: true });
