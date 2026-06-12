@@ -1304,7 +1304,8 @@
       width: 100vw;
       max-width: 100vw;
       margin: 2.5rem calc(50% - 50vw) calc(-1 * 5rem);
-      display: block;
+      display: flex;
+      justify-content: center;
     }
 
     /* Coastal background waves */
@@ -2599,7 +2600,7 @@
 
     <!-- Animated food illustration -->
     <div class="tt-illustration" aria-hidden="true">
-      <svg viewBox="0 0 560 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;">
+      <svg viewBox="0 0 560 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:2000px;height:auto;display:block;">
               <defs>
                 <linearGradient id="tt-table" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="0%" stop-color="#c8b89a"/>
@@ -2625,7 +2626,7 @@
 
               <!-- ── COASTAL BACKGROUND ── -->
               <!-- Sky gradient -->
-              <rect width="560" height="112" fill="url(#tt-sky)" rx="8"/>
+              <rect width="560" height="112" fill="url(#tt-sky)"/>
 
               <!-- Sun (moved inward to avoid overlap with right headland) -->
               <circle cx="440" cy="28" r="18" fill="#e8934a" opacity="0.18"/>
@@ -2740,7 +2741,7 @@
               <circle cx="440" cy="143" r="2.5" fill="#c8b89a" opacity="0.6"/>
 
               <!-- ── TABLE SURFACE ── -->
-              <rect x="0" y="118" width="560" height="42" fill="url(#tt-table)" rx="4"/>
+              <rect x="0" y="118" width="560" height="42" fill="url(#tt-table)"/>
               <!-- Tablecloth top edge -->
               <rect x="0" y="112" width="560" height="14" fill="url(#tt-cloth)" rx="3"/>
               <!-- Tablecloth scallop edge -->
